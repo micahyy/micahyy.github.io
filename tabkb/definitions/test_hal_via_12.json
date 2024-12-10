@@ -1,0 +1,269 @@
+{
+	"name": "OW link65ec",
+	"vendorId": "0x4F57",
+	"productId": "0x4C4B",
+	"matrix": {
+		"rows": 5,
+		"cols": 5
+	},
+    "menus": [
+        {
+            "label": "Config",
+            "content": [
+                {
+                    "label": "Magic",
+                    "content": [
+                        {
+                            "label": "Toggle N-key rollover / \u5168\u952e\u65e0\u51b2\u5f00\u5173\uff08\u975eUSB\u6a21\u5f0f\u614e\u7528\uff09",
+                            "type": "toggle",
+                            "content": ["id_cp_magic_nkro", 19, 1]
+                        },
+                        {
+                            "label": "Toggles the status of the GUI keys / \u3010Win\u3011\u952e\u5f00\u5173\uff08\u6e38\u620f\u65f6\u5173\u95edWin\u952e\uff09",
+                            "type": "toggle",
+                            "content": ["id_cp_magic_gui", 19, 2]
+                        },
+                        {
+                            "label": "Toggle Alt and GUI swap on both sides / \u3010Alt/Cmd\u3011\u4e92\u6362\u3010Win/Opt\u3011",
+                            "type": "toggle",
+                            "content": ["id_cp_magic_alt_gui", 19, 3]
+                        },
+                        {
+                            "label": "Treat Caps Lock as Control / \u5c06\u3010Caps\u3011\u53d8\u4e3a\u3010Ctrl\u3011",
+                            "type": "toggle",
+                            "content": ["id_cp_magic_caps_ctrl", 19, 4]
+                        }
+                    ]
+                },
+                {
+                    "label": "Features",
+                    "content": [
+                        {
+                            "label": "High speed / \u9ad8\u901f\u5237\u65b0\u6e38\u620f\u6a21\u5f0f\uff08\u975eUSB\u8fde\u63a5\u614e\u7528\uff09",
+                            "type": "toggle",
+                            "content": ["id_cp_high_speed_mode", 17, 3]
+                        }
+                    ]
+                },
+                {
+                    "label": "Firmware",
+                    "content": [
+                        {
+                            "label": "Clear Settings / \u5220\u9664\u952e\u76d8\u6240\u6709\u914d\u7f6e\uff08\u4f7f\u7528\u540e\u9700\u8981\u91cd\u542f\u952e\u76d8\uff09",
+                            "type": "toggle",
+                            "content": ["id_cp_eeprom_reset", 16, 2]
+                        },
+                        {
+                            "label": "Reboot Keyboard / \u91cd\u542f\u952e\u76d8\uff08VIA\u4f1a\u9000\u51fa\uff09",
+                            "type": "toggle",
+                            "content": ["id_cp_kbd_reboot", 16, 3]
+                        },
+                        {
+                            "label": "Keyboard DFU / \u8fdb\u5165\u952e\u76d8\u5237\u673a\u6a21\u5f0f\uff08VIA\u4f1a\u9000\u51fa\uff09",
+                            "type": "toggle",
+                            "content": ["id_cp_kbd_dfu", 16, 1]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "customKeycodes": [
+        {"name": "Key travel disable",
+         "title": "[TKT_0] Key travel disable / \u5173\u95ed\u952e\u7a0b\u8bbe\u7f6e",
+         "shortName": "TK0"
+        },
+        {"name": "Key travel 0.1mm",
+         "title": "[TKT_1] Key travel 0.1mm / \u952e\u7a0b 0.1mm",
+         "shortName": "TK1"
+        },
+        {"name": "Key travel 0.2mm",
+         "title": "[TKT_2] Key travel 0.2mm / \u952e\u7a0b 0.2mm",
+         "shortName": "TK2"
+        },
+        {"name": "Key travel 0.3mm",
+         "title": "[TKT_3] Key travel 0.3mm / \u952e\u7a0b 0.3mm",
+         "shortName": "TK3"
+        },
+        {"name": "Key travel 0.4mm",
+         "title": "[TKT_0] Key travel 0.4mm / \u952e\u7a0b 0.4mm",
+         "shortName": "TK4"
+        },
+        {"name": "Key travel 0.5mm",
+         "title": "[TKT_0] Key travel 0.5mm / \u952e\u7a0b 0.5mm",
+         "shortName": "TK5"
+        },
+        {"name": "Key travel 0.6mm",
+         "title": "[TKT_0] Key travel 0.6mm / \u952e\u7a0b 0.6mm",
+         "shortName": "TK6"
+        },
+        {"name": "Key travel 0.7mm",
+         "title": "[TKT_0] Key travel 0.7mm / \u952e\u7a0b 0.7mm",
+         "shortName": "TK7"
+        },
+        {"name": "Key travel 0.8mm",
+         "title": "[TKT_0] Key travel 0.8mm / \u952e\u7a0b 0.8mm",
+         "shortName": "TK8"
+        },
+        {"name": "Key travel 0.9mm",
+         "title": "[TKT_0] Key travel 0.9mm / \u952e\u7a0b 0.9mm",
+         "shortName": "TK9"
+        },
+        {"name": "Key travel 1.0mm",
+         "title": "[TKT_10] Key travel 1.0mm / \u952e\u7a0b 1.0mm",
+         "shortName": "TK10"
+        },
+        {"name": "Key travel 1.1mm",
+         "title": "[TKT_11] Key travel 1.1mm / \u952e\u7a0b 1.1mm",
+         "shortName": "TK11"
+        },
+        {"name": "Key travel 1.2mm",
+         "title": "[TKT_12] Key travel 1.2mm / \u952e\u7a0b 1.2mm",
+         "shortName": "TK12"
+        },
+        {"name": "Key travel 1.3mm",
+         "title": "[TKT_13] Key travel 1.3mm / \u952e\u7a0b 1.3mm",
+         "shortName": "TK13"
+        },
+        {"name": "Key travel 1.4mm",
+         "title": "[TKT_14] Key travel 1.4mm / \u952e\u7a0b 1.4mm",
+         "shortName": "TK14"
+        },
+        {"name": "Key travel 1.5mm",
+         "title": "[TKT_15] Key travel 1.5mm / \u952e\u7a0b 1.5mm",
+         "shortName": "TK15"
+        },
+        {"name": "Key travel 1.6mm",
+         "title": "[TKT_16] Key travel 1.6mm / \u952e\u7a0b 1.6mm",
+         "shortName": "TK16"
+        },
+        {"name": "Key travel 1.7mm",
+         "title": "[TKT_17] Key travel 1.7mm / \u952e\u7a0b 1.7mm",
+         "shortName": "TK17"
+        },
+        {"name": "Key travel 1.8mm",
+         "title": "[TKT_18] Key travel 1.8mm / \u952e\u7a0b 1.8mm",
+         "shortName": "TK18"
+        },
+        {"name": "Key travel 1.9mm",
+         "title": "[TKT_19] Key travel 1.9mm / \u952e\u7a0b 1.9mm",
+         "shortName": "TK19"
+        },
+        {"name": "Key travel 2.0mm",
+         "title": "[TKT_20] Key travel 2.0mm / \u952e\u7a0b 2.0mm",
+         "shortName": "TK20"
+        },
+        {"name": "Key travel 2.1mm",
+         "title": "[TKT_21] Key travel 2.1mm / \u952e\u7a0b 2.1mm",
+         "shortName": "TK21"
+        },
+        {"name": "Key travel 2.2mm",
+         "title": "[TKT_22] Key travel 2.2mm / \u952e\u7a0b 2.2mm",
+         "shortName": "TK22"
+        },
+        {"name": "Key travel 2.3mm",
+         "title": "[TKT_23] Key travel 2.3mm / \u952e\u7a0b 2.3mm",
+         "shortName": "TK23"
+        },
+        {"name": "Key travel 2.4mm",
+         "title": "[TKT_24] Key travel 2.4mm / \u952e\u7a0b 2.4mm",
+         "shortName": "TK24"
+        },
+        {"name": "Key travel 2.5mm",
+         "title": "[TKT_25] Key travel 2.5mm / \u952e\u7a0b 2.5mm",
+         "shortName": "TK25"
+        },
+        {"name": "Key travel 2.6mm",
+         "title": "[TKT_26] Key travel 2.6mm / \u952e\u7a0b 2.6mm",
+         "shortName": "TK26"
+        },
+        {"name": "Key travel 2.7mm",
+         "title": "[TKT_27] Key travel 2.7mm / \u952e\u7a0b 2.7mm",
+         "shortName": "TK27"
+        },
+        {"name": "Key travel 2.8mm",
+         "title": "[TKT_28] Key travel 2.8mm / \u952e\u7a0b 2.8mm",
+         "shortName": "TK28"
+        },
+        {"name": "Key travel 2.9mm",
+         "title": "[TKT_29] Key travel 2.9mm / \u952e\u7a0b 2.9mm",
+         "shortName": "TK29"
+        },
+        {"name": "Key travel 3.0mm",
+         "title": "[TKT_30] Key travel 3.0mm / \u952e\u7a0b 3.0mm",
+         "shortName": "TK30"
+        },
+        {"name": "Key travel 3.1mm",
+         "title": "[TKT_31] Key travel 3.1mm / \u952e\u7a0b 3.1mm",
+         "shortName": "TK31"
+        },
+        {"name": "Key travel 3.2mm",
+         "title": "[TKT_32] Key travel 3.2mm / \u952e\u7a0b 3.2mm",
+         "shortName": "TK32"
+        },
+        {"name": "Key travel 3.3mm",
+         "title": "[TKT_33] Key travel 3.3mm / \u952e\u7a0b 3.3mm",
+         "shortName": "TK33"
+        },
+        {"name": "Key travel 3.4mm",
+         "title": "[TKT_34] Key travel 3.4mm / \u952e\u7a0b 3.4mm",
+         "shortName": "TK34"
+        },
+        {"name": "Key travel 3.5mm",
+         "title": "[TKT_35] Key travel 3.5mm / \u952e\u7a0b 3.5mm",
+         "shortName": "TK35"
+        },
+        {"name": "Key travel 3.6mm",
+         "title": "[TKT_36] Key travel 3.6mm / \u952e\u7a0b 3.6mm",
+         "shortName": "TK36"
+        },
+        {"name": "Key travel 3.7mm",
+         "title": "[TKT_37] Key travel 3.7mm / \u952e\u7a0b 3.7mm",
+         "shortName": "TK37"
+        },
+        {"name": "Key travel 3.8mm",
+         "title": "[TKT_38] Key travel 3.8mm / \u952e\u7a0b 3.8mm",
+         "shortName": "TK38"
+        },
+        {"name": "Key travel 3.9mm",
+         "title": "[TKT_39] Key travel 3.9mm / \u952e\u7a0b 3.9mm",
+         "shortName": "TK39"
+        }
+    ],
+	"layouts": {
+		"keymap": [
+                [
+                    "0,0",
+                    "0,1",
+                    "0,2",
+                    "0,3",
+                    "0,4"
+                ],
+                [
+                    "1,0",
+                    "1,1",
+                    "1,2",
+                    "1,3",
+                    "1,4"
+                ],
+                [
+                    " 2,0",
+                    " 2,1",
+                    " 2,2",
+                    " 2,3"
+                ],
+                [
+                    "3,0",
+                    "3,1",
+                    "3,2",
+                    "3,3",
+                    "3,4"
+                ],
+                [
+                    " 4,0",
+                    " 4,1",
+                    " 4,3"
+                ]
+        ]
+	}
+}

@@ -1,0 +1,73 @@
+{
+  "name": "tabkb",
+  "vendorId": "0x5448",
+  "productId": "0x4842",
+  "cdc": false,
+  "firmware": "0.0.0",
+  "firmwareFile": "",
+  "matrixLighting": {
+    "rows": 7,
+    "cols": 7,
+    "importEnable": true,
+    "maxFrame": 300
+  },
+  "actuation": true,
+  "screen": {
+    "menus": ["video", "image", "slider"],
+    "swapBit": true,
+    "fileTypes": [
+      {
+        "label": "屏幕动画 Area1",
+        "type": "video",
+        "format": "ANIM",
+        "orientations": 0,
+        "owidth": 80,
+        "oheight": 30,
+        "animFramesLimit": -1
+      },
+      {
+        "label": "屏幕动画 Area2",
+        "type": "video",
+        "format": "ANIM",
+        "orientations": 0,
+        "owidth": 80,
+        "oheight": 112,
+        "animFramesLimit": -1
+      },
+      {
+        "label": "屏幕背景",
+        "type": "image",
+        "format": "ABKG",
+        "orientations": 0,
+        "owidth": 80,
+        "oheight": 160
+      },
+      {
+        "label": "屏幕状态",
+        "type": "image",
+        "format": "ASTS",
+        "orientations": 0,
+        "owidth": 96,
+        "oheight": 88
+      },
+      {
+        "label": "Custom Slider",
+        "type": "slider",
+        "format": "ANPS",
+        "orientations": 0,
+        "owidth": 80,
+        "oheight": 30,
+        "animFramesLimit": -1
+      },
+      {
+        "label": "Theme",
+        "type": "slider",
+        "format": "ANPT",
+        "orientations": 0,
+        "owidth": 80,
+        "oheight": 112,
+        "animFramesLimit": -1
+      }
+    ]
+  }
+}

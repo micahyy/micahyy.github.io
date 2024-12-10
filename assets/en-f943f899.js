@@ -1,0 +1,1 @@
+const e="Image",o="Theme",t={"Toggle N-key rollover":"Toggle N-key Rollover","Toggles the status of the GUI keys":"Toggles the Status of the GUI Keys","Toggle Alt and GUI swap on both sides":"Toggle Alt and GUI Swap on Both Sides",image:e,theme:o};export{t as default,e as image,o as theme};

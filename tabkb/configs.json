@@ -1,0 +1,641 @@
+[
+  {
+    "name": "AKKO 5098B",
+    "vendorId": "0x3151",
+    "productId": "0x4015",
+    "firmware": "0.0.0",
+    "cdc": true,
+    "screen": {
+      "menus": [
+        "video",
+        "image",
+        "slider"
+      ],
+      "fileTypes": [
+        {
+          "label": "动画",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 172,
+          "oheight": 320,
+          "animFramesLimit": 400
+        },
+        {
+          "label": "屏幕背景",
+          "type": "image",
+          "format": "ABKG",
+          "orientations": 0,
+          "owidth": 172,
+          "oheight": 320
+        },
+        {
+          "label": "动画",
+          "type": "slider",
+          "format": "ANPS",
+          "orientations": 0,
+          "owidth": 172,
+          "oheight": 320,
+          "animFramesLimit": 400
+        }
+      ]
+    }
+  },
+  {
+    "name": "KB950 PRO",
+    "vendorId": "0x54AB",
+    "productId": "0xB950",
+    "firmware": "0.0.0",
+    "cdc": true,
+    "screen": {
+      "menus": [
+        "video"
+      ],
+      "fileTypes": [
+        {
+          "label": "动画",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 96,
+          "animFramesLimit": 400
+        }
+      ]
+    }
+  },
+  {
+    "name": "Twos Hotot",
+    "vendorId": "0xAB22",
+    "productId": "0x484F",
+    "cdc": true,
+    "screen": {
+      "menus": [
+        "video",
+        "image",
+        "slider"
+      ],
+      "swapBit": true,
+      "fileTypes": [
+        {
+          "label": "",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80,
+          "animFramesLimit": 480
+        },
+        {
+          "label": "屏幕背景",
+          "type": "image",
+          "format": "ABKG",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80
+        },
+        {
+          "label": "",
+          "type": "slider",
+          "format": "ANPS",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80,
+          "animFramesLimit": 480
+        }
+      ]
+    }
+  },
+  {
+    "name": "JoJo R67ec",
+    "vendorId": "0x4A4F",
+    "productId": "0x5243",
+    "actuation": true
+  },
+  {
+    "vendorId": "0x4A4F",
+    "productId": "0x4D64",
+    "firmware": "0.0.0",
+    "cdc": true,
+    "screen": [
+      {
+        "label": "屏幕动画 Area1",
+        "type": "video",
+        "format": "ANIM",
+        "orientations": 0,
+        "owidth": 80,
+        "oheight": 30
+      },
+      {
+        "label": "屏幕动画 Area2",
+        "type": "video",
+        "format": "ANIM",
+        "orientations": 0,
+        "owidth": 80,
+        "oheight": 112
+      },
+      {
+        "label": "屏幕背景",
+        "type": "image",
+        "format": "ABKG",
+        "orientations": 0,
+        "owidth": 80,
+        "oheight": 160
+      },
+      {
+        "label": "屏幕状态",
+        "type": "image",
+        "format": "ASTS",
+        "orientations": 0,
+        "owidth": 96,
+        "oheight": 88
+      }
+    ]
+  },
+  {
+    "name": "NOAH",
+    "vendorId": "0x4D58",
+    "productId": "0x4E66",
+    "firmware": "0.0.0",
+    "cdc": true,
+    "screen": {
+      "menus": [
+        "video"
+      ],
+      "fileTypes": [
+        {
+          "label": "动画",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172,
+          "animFramesLimit": 600
+        }
+      ]
+    }
+  },
+  {
+    "name": "OW suit hal",
+    "vendorId": "0x4F57",
+    "productId": "0x5380",
+    "actuation": true
+  },
+  {
+    "name": "QK101",
+    "vendorId": "0x514B",
+    "productId": "0x4D04",
+    "firmware": "0.0.0",
+    "cdc": true,
+    "matrixLighting": {
+      "rows": 7,
+      "cols": 7,
+      "cdc": true,
+      "shareApi": "https://novel.qwertykeys.com/api/leds"
+    },
+    "screen": {
+      "menus": [
+        "video",
+        "image",
+        "slider"
+      ],
+      "fileTypes": [
+        {
+          "label": "Custom Animation",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172,
+          "animFramesLimit": 500
+        },
+        {
+          "label": "Theme",
+          "type": "video",
+          "format": "ANIT",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172,
+          "animFramesLimit": 300
+        },
+        {
+          "label": "Custom Image",
+          "type": "image",
+          "format": "ABKG",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172
+        },
+        {
+          "label": "Theme",
+          "type": "image",
+          "format": "ABKT",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172
+        },
+        {
+          "label": "Custom Slider",
+          "type": "slider",
+          "format": "ANPS",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172,
+          "animFramesLimit": 500
+        },
+        {
+          "label": "Theme",
+          "type": "slider",
+          "format": "ANPT",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172,
+          "animFramesLimit": 300
+        }
+      ]
+    },
+    "tapDance": [
+      {
+        "name": "TD (2.4G)",
+        "title": "Hold and short-press to pair, long-press to delete pairing memory. / 短按配对连接，长按删除配对信息",
+        "shortName": "TD(2.4G)"
+      },
+      {
+        "name": "TD (BLE1)",
+        "title": "Hold and short-press to pair, long-press to delete pairing memory. / 短按配对连接，长按删除配对信息",
+        "shortName": "TD(BLE1)"
+      },
+      {
+        "name": "TD (BLE2)",
+        "title": "Hold and short-press to pair, long-press to delete pairing memory. / 短按配对连接，长按删除配对信息",
+        "shortName": "TD(BLE2)"
+      },
+      {
+        "name": "TD (BLE3)",
+        "title": "Hold and short-press to pair, long-press to delete pairing memory. / 短按配对连接，长按删除配对信息",
+        "shortName": "TD(BLE3)"
+      },
+      {
+        "name": "TD (REST)",
+        "title": "Long-press 3 seconds to delete all profile and settings. / 长按3秒删除键盘所有配置",
+        "shortName": "TD(REST)"
+      },
+      {
+        "name": "TD (WIN)",
+        "title": "Hold and short-press to switch win/mac, long-press to lock/unlock windows key. / 短按切换win/mac模式，长按锁/解锁win键",
+        "shortName": "TD(WIN)"
+      }
+    ]
+  },
+  {
+    "name": "QK80 MK2",
+    "vendorId": "0x514B",
+    "productId": "0x4D02",
+    "firmware": "0.0.0",
+    "cdc": true,
+    "matrixLighting": {
+      "rows": 7,
+      "cols": 7,
+      "cdc": true,
+      "shareApi": "https://novel.qwertykeys.com/api/leds"
+    },
+    "screen": {
+      "menus": [
+        "video",
+        "image",
+        "slider"
+      ],
+      "fileTypes": [
+        {
+          "label": "Custom Animation",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172,
+          "animFramesLimit": 500
+        },
+        {
+          "label": "Theme",
+          "type": "video",
+          "format": "ANIT",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172,
+          "animFramesLimit": 300
+        },
+        {
+          "label": "Custom Image",
+          "type": "image",
+          "format": "ABKG",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172
+        },
+        {
+          "label": "Theme",
+          "type": "image",
+          "format": "ABKT",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172
+        },
+        {
+          "label": "Custom Slider",
+          "type": "slider",
+          "format": "ANPS",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172,
+          "animFramesLimit": 500
+        },
+        {
+          "label": "Theme",
+          "type": "slider",
+          "format": "ANPT",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172,
+          "animFramesLimit": 300
+        }
+      ]
+    },
+    "tapDance": [
+      {
+        "name": "TD (2.4G)",
+        "title": "Hold and short-press to pair, long-press to delete pairing memory.",
+        "shortName": "TD(2.4G)"
+      },
+      {
+        "name": "TD (BLE1)",
+        "title": "Hold and short-press to pair, long-press to delete pairing memory.",
+        "shortName": "TD(BLE1)"
+      },
+      {
+        "name": "TD (BLE2)",
+        "title": "Hold and short-press to pair, long-press to delete pairing memory.",
+        "shortName": "TD(BLE2)"
+      },
+      {
+        "name": "TD (BLE3)",
+        "title": "Hold and short-press to pair, long-press to delete pairing memory.",
+        "shortName": "TD(BLE3)"
+      },
+      {
+        "name": "TD (REST)",
+        "title": "Long-press 3 seconds to delete all profile and settings.",
+        "shortName": "TD(REST)"
+      },
+      {
+        "name": "TD (WIN)",
+        "title": "Hold and short-press to switch win/mac, long-press to lock/unlock windows key.",
+        "shortName": "TD(WIN)"
+      }
+    ]
+  },
+  {
+    "name": "qk80v2",
+    "vendorId": "0x4F57",
+    "productId": "0x5002",
+    "firmware": "0.0.0",
+    "cdc": true,
+    "matrixLighting": {
+      "rows": 7,
+      "cols": 7
+    },
+    "screen": {
+      "menus": [
+        "video"
+      ],
+      "fileTypes": [
+        {
+          "label": "动画",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172,
+          "animFramesLimit": 600
+        },
+        {
+          "label": "主题",
+          "type": "video",
+          "format": "ANIT",
+          "orientations": 0,
+          "owidth": 320,
+          "oheight": 172,
+          "animFramesLimit": 200
+        }
+      ]
+    }
+  },
+  {
+    "name": "tabkb",
+    "vendorId": "0x5448",
+    "productId": "0x4842",
+    "cdc": false,
+    "firmware": "0.0.0",
+    "firmwareFile": "",
+    "matrixLighting": {
+      "rows": 7,
+      "cols": 7,
+      "importEnable": true,
+      "maxFrame": 300
+    },
+    "actuation": true,
+    "screen": {
+      "menus": [
+        "video",
+        "image",
+        "slider"
+      ],
+      "swapBit": true,
+      "fileTypes": [
+        {
+          "label": "屏幕动画 Area1",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 80,
+          "oheight": 30,
+          "animFramesLimit": -1
+        },
+        {
+          "label": "屏幕动画 Area2",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 80,
+          "oheight": 112,
+          "animFramesLimit": -1
+        },
+        {
+          "label": "屏幕背景",
+          "type": "image",
+          "format": "ABKG",
+          "orientations": 0,
+          "owidth": 80,
+          "oheight": 160
+        },
+        {
+          "label": "屏幕状态",
+          "type": "image",
+          "format": "ASTS",
+          "orientations": 0,
+          "owidth": 96,
+          "oheight": 88
+        },
+        {
+          "label": "Custom Slider",
+          "type": "slider",
+          "format": "ANPS",
+          "orientations": 0,
+          "owidth": 80,
+          "oheight": 30,
+          "animFramesLimit": -1
+        },
+        {
+          "label": "Theme",
+          "type": "slider",
+          "format": "ANPT",
+          "orientations": 0,
+          "owidth": 80,
+          "oheight": 112,
+          "animFramesLimit": -1
+        }
+      ]
+    }
+  },
+  {
+    "name": "Targa 98",
+    "vendorId": "0x5546",
+    "productId": "0x5463",
+    "cdc": true,
+    "screen": {
+      "menus": [
+        "video",
+        "image",
+        "slider"
+      ],
+      "swapBit": true,
+      "fileTypes": [
+        {
+          "label": "",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80,
+          "animFramesLimit": 480
+        },
+        {
+          "label": "屏幕背景",
+          "type": "image",
+          "format": "ABKG",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80
+        },
+        {
+          "label": "",
+          "type": "slider",
+          "format": "ANPS",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80,
+          "animFramesLimit": 480
+        }
+      ]
+    }
+  },
+  {
+    "name": "Targa 98U RGB",
+    "vendorId": "0x5546",
+    "productId": "0x5464",
+    "cdc": true,
+    "screen": {
+      "menus": [
+        "video",
+        "image",
+        "slider"
+      ],
+      "swapBit": true,
+      "fileTypes": [
+        {
+          "label": "",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80,
+          "animFramesLimit": 480
+        },
+        {
+          "label": "屏幕背景",
+          "type": "image",
+          "format": "ABKG",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80
+        },
+        {
+          "label": "",
+          "type": "slider",
+          "format": "ANPS",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80,
+          "animFramesLimit": 480
+        }
+      ]
+    }
+  },
+  {
+    "name": "Targa 98U",
+    "vendorId": "0x5546",
+    "productId": "0x5462",
+    "cdc": true,
+    "screen": {
+      "menus": [
+        "video",
+        "image",
+        "slider"
+      ],
+      "swapBit": true,
+      "fileTypes": [
+        {
+          "label": "",
+          "type": "video",
+          "format": "ANIM",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80,
+          "animFramesLimit": 480
+        },
+        {
+          "label": "屏幕背景",
+          "type": "image",
+          "format": "ABKG",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80
+        },
+        {
+          "label": "",
+          "type": "slider",
+          "format": "ANPS",
+          "orientations": 0,
+          "owidth": 160,
+          "oheight": 80,
+          "animFramesLimit": 480
+        }
+      ]
+    }
+  },
+  {
+    "name": "OW link65ec",
+    "vendorId": "0x4F57",
+    "productId": "0x4C4B",
+    "actuation": true
+  }
+]

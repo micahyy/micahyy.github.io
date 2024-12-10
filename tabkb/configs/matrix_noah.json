@@ -1,0 +1,21 @@
+{
+  "name": "NOAH",
+  "vendorId": "0x4D58",
+  "productId": "0x4E66",
+  "firmware": "0.0.0",
+  "cdc": true,
+  "screen": {
+    "menus": ["video"],
+    "fileTypes": [
+      {
+        "label": "动画",
+        "type": "video",
+        "format": "ANIM",
+        "orientations": 0,
+        "owidth": 320,
+        "oheight": 172,
+        "animFramesLimit": 600
+      }
+    ]
+  }
+}

@@ -1,0 +1,480 @@
+{
+  "name": "JOJO G93",
+  "vendorId": "0x4A4F",
+  "productId": "0x4793",
+  "matrix": {
+    "rows": 12,
+    "cols": 10
+  },
+  "menus": [
+    {
+      "label": "Lighting",
+      "content": [
+        {
+          "label": "Underglow",
+          "content": [
+            {
+              "label": "Brightness",
+              "type": "range",
+              "options": [0, 255],
+              "content": ["id_qmk_rgblight_brightness", 2, 1]
+            },
+            {
+              "label": "Effect",
+              "type": "dropdown",
+              "content": ["id_qmk_rgblight_effect", 2, 2],
+              "options": [
+                "All Off",
+                "Solid Color",
+                "Breathing 1",
+                "Breathing 2",
+                "Breathing 3",
+                "Breathing 4",
+                "Rainbow Mood 1",
+                "Rainbow Mood 2",
+                "Rainbow Mood 3",
+                "Rainbow Swirl 1",
+                "Rainbow Swirl 2",
+                "Rainbow Swirl 3",
+                "Rainbow Swirl 4",
+                "Rainbow Swirl 5",
+                "Rainbow Swirl 6",
+                "Snake 1",
+                "Snake 2",
+                "Snake 3",
+                "Snake 4",
+                "Snake 5",
+                "Snake 6",
+                "Knight 1",
+                "Knight 2",
+                "Knight 3",
+                "Christmas",
+                "Gradient 1",
+                "Gradient 2",
+                "Gradient 3",
+                "Gradient 4",
+                "Gradient 5",
+                "Gradient 6",
+                "Gradient 7",
+                "Gradient 8",
+                "Gradient 9",
+                "Gradient 10",
+                "RGB Test",
+                "Alternating",
+                "Twinkle 1",
+                "Twinkle 2",
+                "Twinkle 3",
+                "Twinkle 4",
+                "Twinkle 5",
+                "Twinkle 6"
+              ]
+            },
+            {
+              "showIf": "{id_qmk_rgblight_effect} != 0",
+              "label": "Effect Speed",
+              "type": "range",
+              "options": [0, 255],
+              "content": ["id_qmk_rgblight_effect_speed", 2, 3]
+            },
+            {
+              "showIf": "{id_qmk_rgblight_effect} != 0 && {id_qmk_rgblight_effect} != 35",
+              "label": "Color",
+              "type": "color",
+              "content": ["id_qmk_rgblight_color", 2, 4]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Config",
+      "content": [
+        {
+          "label": "Magic",
+          "content": [
+            {
+              "label": "Toggle N-key rollover",
+              "type": "toggle",
+              "content": ["id_cp_magic_nkro", 19, 1]
+            },
+            {
+              "label": "Toggles the status of the GUI keys",
+              "type": "toggle",
+              "content": ["id_cp_magic_gui", 19, 2]
+            },
+            {
+              "label": "Toggle Alt and GUI swap on both sides",
+              "type": "toggle",
+              "content": ["id_cp_magic_alt_gui", 19, 3]
+            },
+            {
+              "label": "Treat Caps Lock as Control",
+              "type": "toggle",
+              "content": ["id_cp_magic_caps_ctrl", 19, 4]
+            }
+          ]
+        },
+        {
+          "label": "Features",
+          "content": [
+            {
+              "label": "High Speed",
+              "type": "toggle",
+              "content": ["id_cp_high_speed_mode", 17, 3]
+            },
+            {
+              "label": "Sleep Mode",
+              "type": "dropdown",
+              "options": [
+                ["Disable", 0],
+                ["5 minutes", 1],
+                ["15 minutes", 2],
+                ["30 minutes", 3],
+                ["1 hour", 4],
+                ["3 hours", 5],
+                ["6 hours", 6]
+              ],
+              "content": ["id_cp_sleep_mode", 17, 2]
+            },
+            {
+              "label": "Sleep Power Saving",
+              "type": "toggle",
+              "content": ["id_cp_power_save", 17, 5]
+            }
+          ]
+        },
+        {
+          "label": "Connect",
+          "content": [
+            {
+              "label": "Connect Mode",
+              "type": "dropdown",
+              "options": [
+                ["USB", 0],
+                ["Wireless 2.4G", 1],
+                ["Bluetooth G1", 2],
+                ["Bluetooth G2", 3],
+                ["Bluetooth G3", 4]
+              ],
+              "content": ["id_cp_connect_mode", 18, 1]
+            },
+            {
+              "label": "Transmission Power",
+              "type": "dropdown",
+              "showIf": "{id_cp_connect_mode} > 0",
+              "options": [
+                ["Level 0", 0],
+                ["Level 1", 1],
+                ["Level 2", 2],
+                ["Level 3", 3],
+                ["Level 4", 4],
+                ["Level 5", 5],
+                ["Level 6", 6],
+                ["Level 7", 7]
+              ],
+              "content": ["id_cp_ble_tx_mode", 18, 2]
+            },
+            {
+              "label": "Delete current bound",
+              "type": "toggle",
+              "showIf": "{id_cp_connect_mode} > 1",
+              "content": ["id_cp_ble_clear_current", 18, 3]
+            },
+            {
+              "label": "Delete all bounds",
+              "type": "toggle",
+              "showIf": "{id_cp_connect_mode} > 1",
+              "content": ["id_cp_ble_clear_bounds", 18, 4]
+            },
+            {
+              "label": "2.4G Receiver DFU",
+              "type": "toggle",
+              "showIf": "{id_cp_connect_mode} == 1",
+              "content": ["id_cp_w24_dfu", 18, 5]
+            }
+          ]
+        },
+        {
+          "label": "Firmware",
+          "content": [
+            {
+              "label": "Clear Settings",
+              "type": "toggle",
+              "content": ["id_cp_eeprom_reset", 16, 2]
+            },
+            {
+              "label": "Reboot Keyboard",
+              "type": "toggle",
+              "content": ["id_cp_kbd_reboot", 16, 3]
+            },
+            {
+              "label": "Keyboard DFU",
+              "type": "toggle",
+              "content": ["id_cp_kbd_dfu", 16, 1]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "customKeycodes": [
+    {
+      "name": "Light mode",
+      "title": "[LNT_MOD] Toggle RGB Matrix or Light mode control",
+      "shortName": "LgtMod"
+    },
+    {
+      "name": "Light Power on",
+      "title": "[LNT_ON] Turn on all LED power",
+      "shortName": "LgtOn"
+    },
+    {
+      "name": "Light Power off",
+      "title": "[LNT_OFF] Turn off all LED power",
+      "shortName": "LgtOff"
+    },
+    {
+      "name": "Config reset",
+      "title": "[CFG_RST] Reset kbd settings",
+      "shortName": "CfRst"
+    },
+    {
+      "name": "USB Mode",
+      "title": "[CNT_USB] Enter USB mode",
+      "shortName": "USB"
+    },
+    {
+      "name": "BLE power+",
+      "title": "[BLE_SGI] Increase BLE transmit power",
+      "shortName": "BS+"
+    },
+    {
+      "name": "BLE power-",
+      "title": "[BLE_SGD] Reduce BLE transmit power",
+      "shortName": "BS-"
+    },
+    {
+      "name": "Clear bound",
+      "title": "[BLE_CLC] Clear the current BLE bound",
+      "shortName": "BCl"
+    },
+    {
+      "name": "Clear all bounds",
+      "title": "[BLE_CLA] Clear all BLE bounds",
+      "shortName": "BCls"
+    },
+    {
+      "name": "BLE G1",
+      "title": "[BLE_GP1] Enter Bluetooth group 1",
+      "shortName": "BLE1"
+    },
+    {
+      "name": "BLE G2",
+      "title": "[BLE_GP2] Enter Bluetooth group 2",
+      "shortName": "BLE2"
+    },
+    {
+      "name": "BLE G3",
+      "title": "[BLE_GP3] Enter Bluetooth group 3",
+      "shortName": "BLE3"
+    },
+    {
+      "name": "Radio 2.4G",
+      "title": "[WIR_G24] Enter radio 2.4G mode",
+      "shortName": "R2.4G"
+    },
+    {
+      "name": "2.4G receiver DFU",
+      "title": "[WIR_BOT] Enter the 2.4G recevier dfu mode",
+      "shortName": "2.4DFU"
+    },
+    {
+      "name": "Sleep mode",
+      "title": "[SLP_MOD] Sleep interval selection",
+      "shortName": "SlpMod"
+    },
+    {
+      "name": "High speed",
+      "title": "[HIG_SPD] High-speed refresh mode",
+      "shortName": "HiSpd"
+    },
+    {
+      "name": "Info leds",
+      "title": "[INF_LED] Toggle display current KBD to Led",
+      "shortName": "InfLed"
+    },
+    {
+      "name": "Info",
+      "title": "[INF_OUT] Print the current KBD information",
+      "shortName": "Info"
+    }
+  ],
+  "layouts": {
+    "labels": [],
+    "keymap": [
+      [
+        "0,0",
+        {
+          "x": 0.25
+        },
+        "0,1",
+        "0,2",
+        "0,3",
+        "0,4",
+        {
+          "x": 0.25
+        },
+        "0,5",
+        "0,6",
+        "6,0",
+        "6,1",
+        {
+          "x": 0.25
+        },
+        "6,2",
+        "6,3",
+        "6,4",
+        "6,5",
+        {
+          "x": 0.25
+        },
+        "2,7",
+        "1,8",
+        "11,7",
+        "11,8"
+      ],
+      [
+        {
+          "y": 0.25
+        },
+        "1,0",
+        "1,1",
+        "1,2",
+        "1,3",
+        "1,4",
+        "1,5",
+        "1,6",
+        "7,0",
+        "7,1",
+        "7,2",
+        "7,3",
+        "7,4",
+        "7,5",
+        {
+          "w": 2
+        },
+        "7,6",
+        "6,7",
+        "6,8",
+        "6,9"
+      ],
+      [
+        {
+          "w": 1.5
+        },
+        "2,0",
+        "2,1",
+        "2,2",
+        "2,3",
+        "2,4",
+        "2,5",
+        "2,6",
+        "8,0",
+        "8,1",
+        "8,2",
+        "8,3",
+        "8,4",
+        "8,5",
+        {
+          "w": 1.5
+        },
+        "8,6",
+        "7,7",
+        "7,8",
+        "7,9"
+      ],
+      [
+        {
+          "w": 1.75
+        },
+        "3,0",
+        "3,1",
+        "3,2",
+        "3,3",
+        "3,4",
+        "3,5",
+        "3,6",
+        "9,0",
+        "9,1",
+        "9,2",
+        "9,3",
+        "9,4",
+        {
+          "w": 2.25
+        },
+        "9,6",
+        "8,7",
+        "8,8",
+        "8,9"
+      ],
+      [
+        {
+          "w": 2.25
+        },
+        "4,0",
+        "4,1",
+        "4,2",
+        "4,3",
+        "4,4",
+        "4,5",
+        "4,6",
+        "10,0",
+        "10,1",
+        "10,2",
+        "10,3",
+        {
+          "w": 1.75
+        },
+        "10,6",
+        "4,8",
+        "9,7",
+        "9,8",
+        "9,9"
+      ],
+      [
+        {
+          "w": 1.25
+        },
+        "5,0",
+        {
+          "w": 1.25
+        },
+        "5,1",
+        {
+          "w": 1.25
+        },
+        "5,2",
+        {
+          "w": 6.25
+        },
+        "5,5",
+        {
+          "w": 1.25
+        },
+        "11,6",
+        {
+          "w": 1.25
+        },
+        "11,4",
+        {
+          "x": 0.5
+        },
+        "5,7",
+        "5,8",
+        "5,9",
+        "10,7",
+        "10,9"
+      ]
+    ]
+  }
+}

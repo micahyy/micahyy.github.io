@@ -1,0 +1,38 @@
+{
+  "name": "Targa 98",
+  "vendorId": "0x5546",
+  "productId": "0x5463",
+  "cdc": true,
+  "screen": {
+    "menus": ["video", "image", "slider"],
+    "swapBit": true,
+    "fileTypes": [
+      {
+        "label": "",
+        "type": "video",
+        "format": "ANIM",
+        "orientations": 0,
+        "owidth": 160,
+        "oheight": 80,
+        "animFramesLimit": 480
+      },
+      {
+        "label": "屏幕背景",
+        "type": "image",
+        "format": "ABKG",
+        "orientations": 0,
+        "owidth": 160,
+        "oheight": 80
+      },
+      {
+        "label": "",
+        "type": "slider",
+        "format": "ANPS",
+        "orientations": 0,
+        "owidth": 160,
+        "oheight": 80,
+        "animFramesLimit": 480
+      }
+    ]
+  }
+}

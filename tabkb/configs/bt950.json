@@ -1,0 +1,21 @@
+{
+  "name": "KB950 PRO",
+  "vendorId": "0x54AB",
+  "productId": "0xB950",
+  "firmware": "0.0.0",
+  "cdc": true,
+  "screen": {
+    "menus": ["video"],
+    "fileTypes": [
+      {
+        "label": "动画",
+        "type": "video",
+        "format": "ANIM",
+        "orientations": 0,
+        "owidth": 160,
+        "oheight": 96,
+        "animFramesLimit": 400
+      }
+    ]
+  }
+}

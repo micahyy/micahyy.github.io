@@ -1,0 +1,34 @@
+{
+  "name": "qk80v2",
+  "vendorId": "0x4F57",
+  "productId": "0x5002",
+  "firmware": "0.0.0",
+  "cdc": true,
+  "matrixLighting": {
+    "rows": 7,
+    "cols": 7
+  },
+  "screen": {
+    "menus": ["video"],
+    "fileTypes": [
+      {
+        "label": "动画",
+        "type": "video",
+        "format": "ANIM",
+        "orientations": 0,
+        "owidth": 320,
+        "oheight": 172,
+        "animFramesLimit": 600
+      },
+      {
+        "label": "主题",
+        "type": "video",
+        "format": "ANIT",
+        "orientations": 0,
+        "owidth": 320,
+        "oheight": 172,
+        "animFramesLimit": 200
+      }
+    ]
+  }
+}

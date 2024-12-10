@@ -1,0 +1,40 @@
+{
+  "vendorId": "0x4A4F",
+  "productId": "0x4D64",
+  "firmware": "0.0.0",
+  "cdc": true,
+  "screen": [
+    {
+      "label": "屏幕动画 Area1",
+      "type": "video",
+      "format": "ANIM",
+      "orientations": 0,
+      "owidth": 80,
+      "oheight": 30
+    },
+    {
+      "label": "屏幕动画 Area2",
+      "type": "video",
+      "format": "ANIM",
+      "orientations": 0,
+      "owidth": 80,
+      "oheight": 112
+    },
+    {
+      "label": "屏幕背景",
+      "type": "image",
+      "format": "ABKG",
+      "orientations": 0,
+      "owidth": 80,
+      "oheight": 160
+    },
+    {
+      "label": "屏幕状态",
+      "type": "image",
+      "format": "ASTS",
+      "orientations": 0,
+      "owidth": 96,
+      "oheight": 88
+    }
+  ]
+}

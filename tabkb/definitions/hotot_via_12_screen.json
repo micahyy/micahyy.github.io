@@ -1,0 +1,143 @@
+{
+	"name": "Twos Hotot",
+	"vendorId": "0xAB22",
+	"productId": "0x484F",
+	"matrix": {
+		"rows": 6,
+		"cols": 16
+	},
+    "menus": [
+        {
+            "label": "Config",
+            "content": [
+	 	        {
+                    "label": "Screen",
+                    "content": [
+                        {
+                            "label": "Display Toggle",
+                            "type": "toggle",
+                            "content": ["id_cp_kbd_screen_toggle", 24, 1]
+                        },
+                        {
+                            "label": "Display Style",
+                            "type": "dropdown",
+                            "showIf": "{id_cp_kbd_screen_toggle} == 1",
+                            "options": [
+                                ["\u591a\u5df4\u80fa", 0],
+                                ["\u8349\u8393\u7c89", 1],
+                                ["\u9cb8\u9ca8\u7d2b", 2],
+                                ["\u5976\u5496\u767d", 3],
+                                ["\u51b7\u9edb\u84dd", 4],
+                                ["LOGO", 5],
+                                ["\u56fe\u7247", 6],
+                                ["\u52a8\u753b", 7]
+                              ],
+                            "content": ["id_cp_kbd_screen_style", 24, 4]
+                        }
+                    ]
+                },
+                {
+                    "label": "Firmware",
+                    "content": [
+                        {
+                            "label": "Clear Settings",
+                            "type": "toggle",
+                            "content": ["id_cp_eeprom_reset", 16, 2]
+                        },
+                        {
+                            "label": "Reboot Keyboard",
+                            "type": "toggle",
+                            "content": ["id_cp_kbd_reboot", 16, 3]
+                        },
+                        {
+                            "label": "Keyboard DFU",
+                            "type": "toggle",
+                            "content": ["id_cp_kbd_dfu", 16, 1]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "customKeycodes": [
+        {"name": "Light mode",
+         "title": "[LNT_MOD] Toggle RGB Matrix or Light mode control",
+         "shortName": "LgtMod"
+        },
+        {"name": "Light Power",
+         "title": "[LNT_TOG] Toggle all LED power",
+         "shortName": "LgtTog"
+        },
+        {"name": "Device shutdown",
+         "title": "[LNT_OFF] The device enters shutdown mode",
+         "shortName": "DevOff"
+        },
+        {"name": "USB Mode",
+         "title": "[CNT_USB] Enter USB mode",
+         "shortName": "USB"
+        },
+        {"name": "Clear bound",
+         "title": "[BLE_CLC] Clear the current BLE bound",
+         "shortName": "BCl"
+        },
+        {"name": "Clear all bounds",
+         "title": "[BLE_CLA] Clear all BLE bounds",
+         "shortName": "BCls"
+        },
+        {"name": "BLE G1",
+         "title": "[BLE_GP1] Enter Bluetooth group 1",
+         "shortName": "BLE1"
+        },
+        {"name": "BLE G2",
+         "title": "[BLE_GP2] Enter Bluetooth group 2",
+         "shortName": "BLE2"
+        },
+        {"name": "BLE G3",
+         "title": "[BLE_GP3] Enter Bluetooth group 3",
+         "shortName": "BLE3"
+        },
+        {"name": "Radio 2.4G",
+         "title": "[WIR_G24] Enter radio 2.4G mode",
+         "shortName": "R2.4G"
+        },
+        {"name": "2.4G receiver DFU",
+         "title": "[WIR_BOT] Enter the 2.4G recevier dfu mode",
+         "shortName": "2.4DFU"
+        },
+        {"name": "Sleep mode",
+         "title": "[SLP_MOD] Sleep interval selection",
+         "shortName": "SlpMod"
+        },
+        {"name": "Info leds",
+         "title": "[INF_LED] Toggle display current KBD to Led",
+         "shortName": "InfLed"
+        },
+        {"name": "Info",
+         "title": "[INF_OUT] Print the current KBD information",
+         "shortName": "Info"
+        },
+        {"name": "Screen toggle",
+         "title": "[LCD_TOG] Screen toggle",
+         "shortName": "ScrTog"
+        },
+        {"name": "Screen style",
+         "title": "[LCD_STY] Screen style color setting",
+         "shortName": "ScrSty"
+        }
+    ],
+	"layouts": {
+		"keymap": [
+            [
+                {
+                    "x": 0,
+                    "y": 0
+                },
+				"0,0",
+				{
+					"x": 0.25
+				},
+				"0,1"
+			]
+		]
+	}
+}

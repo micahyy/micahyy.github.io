@@ -1,0 +1,96 @@
+{
+	"name": "QK101",
+	"vendorId": "0x514B",
+	"productId": "0x4D04",
+  "firmware": "0.0.0",
+  "cdc": true,
+  "matrixLighting": {
+    "rows": 7,
+    "cols": 7,
+    "cdc": true,
+    "shareApi": "https://novel.qwertykeys.com/api/leds"
+  },
+  "screen": {
+    "menus": ["video", "image", "slider"],
+    "fileTypes": [
+      {
+        "label": "Custom Animation",
+        "type": "video",
+        "format": "ANIM",
+        "orientations": 0,
+        "owidth": 320,
+        "oheight": 172,
+        "animFramesLimit": 500
+      },
+      {
+        "label": "Theme",
+        "type": "video",
+        "format": "ANIT",
+        "orientations": 0,
+        "owidth": 320,
+        "oheight": 172,
+        "animFramesLimit": 300
+      },
+      {
+        "label": "Custom Image",
+        "type": "image",
+        "format": "ABKG",
+        "orientations": 0,
+        "owidth": 320,
+        "oheight": 172
+      },
+      {
+        "label": "Theme",
+        "type": "image",
+        "format": "ABKT",
+        "orientations": 0,
+        "owidth": 320,
+        "oheight": 172
+      },
+      {
+        "label": "Custom Slider",
+        "type": "slider",
+        "format": "ANPS",
+        "orientations": 0,
+        "owidth": 320,
+        "oheight": 172,
+        "animFramesLimit": 500
+      },
+      {
+        "label": "Theme",
+        "type": "slider",
+        "format": "ANPT",
+        "orientations": 0,
+        "owidth": 320,
+        "oheight": 172,
+        "animFramesLimit": 300
+      }
+    ]
+  },
+  "tapDance":  [
+    {"name": "TD (2.4G)",
+     "title": "Hold and short-press to pair, long-press to delete pairing memory. / 短按配对连接，长按删除配对信息",
+     "shortName": "TD(2.4G)"
+    },
+    {"name": "TD (BLE1)",
+     "title": "Hold and short-press to pair, long-press to delete pairing memory. / 短按配对连接，长按删除配对信息",
+     "shortName": "TD(BLE1)"
+    },
+    {"name": "TD (BLE2)",
+     "title": "Hold and short-press to pair, long-press to delete pairing memory. / 短按配对连接，长按删除配对信息",
+     "shortName": "TD(BLE2)"
+    },
+    {"name": "TD (BLE3)",
+     "title": "Hold and short-press to pair, long-press to delete pairing memory. / 短按配对连接，长按删除配对信息",
+     "shortName": "TD(BLE3)"
+    },
+    {"name": "TD (REST)",
+     "title": "Long-press 3 seconds to delete all profile and settings. / 长按3秒删除键盘所有配置",
+     "shortName": "TD(REST)"
+    },
+    {"name": "TD (WIN)",
+     "title": "Hold and short-press to switch win/mac, long-press to lock/unlock windows key. / 短按切换win/mac模式，长按锁/解锁win键",
+     "shortName": "TD(WIN)"
+    }
+  ]
+}
