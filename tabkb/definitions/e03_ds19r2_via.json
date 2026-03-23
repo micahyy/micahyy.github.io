@@ -1,0 +1,202 @@
+{
+	"name": "mao_ds19_r2",
+	"vendorId": "0x4E03",
+	"productId": "0x4E03",
+	"matrix": {
+		"rows": 12,
+		"cols": 11
+	},
+	"layouts": {
+		"keymap": [
+			[
+                "11,4",{"x":1},
+                {"w":2}, "7,6"
+			],
+			[
+                "6,7",
+                "6,8",
+                "6,9",
+				"11,7"
+			],
+			[
+				" 7,7",
+				" 7,8",
+				" 7,9",	{"h":2},
+				" 11,8"
+			],
+			[
+				" 8,7",
+				" 8,8",
+				" 8,9"
+	
+			],
+			[
+				" 9,7",
+				" 9,8",
+				" 9,9",				{"h":2},
+				" 11,9"
+			],
+			[
+				{"w":2}, " 10,7",
+
+				" 10,9"
+			]
+		]
+	},
+	"keycodes": ["qmk_lighting"],
+    "menus": [
+        {
+            "label": "Lighting",
+            "content": [
+                {
+                    "label": "Underglow / \u6c1b\u56f4\u706f",
+                    "content": [
+                        {
+                        "label": "Brightness / \u4eae\u5ea6",
+                        "type": "range",
+                        "options": [0, 255],
+                        "content": ["id_qmk_rgblight_brightness", 2, 1]
+                        },
+                        {
+                        "label": "Effect / \u706f\u6548",
+                        "type": "dropdown",
+                        "content": ["id_qmk_rgblight_effect", 2, 2],
+                        "options": [
+                            "All Off",
+                            "Solid Color",
+                            "Breathing 1",
+                            "Breathing 2",
+                            "Breathing 3",
+                            "Breathing 4",
+                            "Rainbow Mood 1",
+                            "Rainbow Mood 2",
+                            "Rainbow Mood 3",
+                            "Rainbow Swirl 1",
+                            "Rainbow Swirl 2",
+                            "Rainbow Swirl 3",
+                            "Rainbow Swirl 4",
+                            "Rainbow Swirl 5",
+                            "Rainbow Swirl 6",
+                            "Snake 1",
+                            "Snake 2",
+                            "Snake 3",
+                            "Snake 4",
+                            "Snake 5",
+                            "Snake 6",
+                            "Knight 1",
+                            "Knight 2",
+                            "Knight 3",
+                            "Christmas",
+                            "Gradient 1",
+                            "Gradient 2",
+                            "Gradient 3",
+                            "Gradient 4",
+                            "Gradient 5",
+                            "Gradient 6",
+                            "Gradient 7",
+                            "Gradient 8",
+                            "Gradient 9",
+                            "Gradient 10",
+                            "RGB Test",
+                            "Alternating",
+                            "Twinkle 1",
+                            "Twinkle 2",
+                            "Twinkle 3",
+                            "Twinkle 4",
+                            "Twinkle 5",
+                            "Twinkle 6"
+                        ]
+                        },
+                        {
+                        "showIf": "{id_qmk_rgblight_effect} != 0",
+                        "label": "Effect Speed / \u52a8\u753b\u901f\u5ea6",
+                        "type": "range",
+                        "options": [0, 255],
+                        "content": ["id_qmk_rgblight_effect_speed", 2, 3]
+                        },
+                        {
+                        "showIf": "{id_qmk_rgblight_effect} != 0 && {id_qmk_rgblight_effect} != 35",
+                        "label": "Color / \u989c\u8272",
+                        "type": "color",
+                        "content": ["id_qmk_rgblight_color", 2, 4]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "customKeycodes": [
+        {"name": "Light mode",
+         "title": "[LNT_MOD] Toggle RGB Matrix or Light mode control / \u5207\u6362\u8f74\u706f\u4e0e\u6c1b\u56f4\u706f\u914d\u7f6e\u6a21\u5f0f",
+         "shortName": "LgtMod"
+        },
+        {"name": "Light Power on",
+         "title": "[LNT_ON] Turn on all LED power / \u7269\u7406\u5f00\u542f\u706f\u4f9b\u7535",
+         "shortName": "LgtOn"
+        },
+        {"name": "Light Power off",
+         "title": "[LNT_OFF] Turn off all LED power / \u7269\u7406\u5173\u95ed\u706f\u4f9b\u7535",
+         "shortName": "LgtOff"
+        },
+        {"name": "Config reset",
+         "title": "[CFG_RST] Reset kbd settings / \u91cd\u7f6e\u952e\u76d8\u914d\u7f6e\u4fe1\u606f",
+         "shortName": "CfRst"
+        },
+        {"name": "USB Mode",
+         "title": "[CNT_USB] Enter USB mode / \u5207\u6362\u5230USB\u6a21\u5f0f",
+         "shortName": "USB"
+        },
+        {"name": "BLE power+",
+         "title": "[BLE_SGI] Increase BLE transmit power / \u589e\u52a0\u84dd\u7259\u53d1\u9001\u529f\u7387",
+         "shortName": "BS+"
+        },
+        {"name": "BLE power-",
+         "title": "[BLE_SGD] Reduce BLE transmit power / \u964d\u4f4e\u84dd\u7259\u53d1\u9001\u529f\u7387",
+         "shortName": "BS-"
+        },
+        {"name": "Clear bound",
+         "title": "[BLE_CLC] Clear the current BLE bound / \u6e05\u9664\u5f53\u524d\u84dd\u7259\u5206\u7ec4\u914d\u5bf9",
+         "shortName": "BCl"
+        },
+        {"name": "Clear all bounds",
+         "title": "[BLE_CLA] Clear all BLE bounds / \u6e05\u9664\u6240\u6709\u84dd\u7259\u5206\u7ec4\u914d\u5bf9",
+         "shortName": "BCls"
+        },
+        {"name": "BLE G1",
+         "title": "[BLE_GP1] Enter Bluetooth group 1 / \u5207\u6362\u84dd\u7259\u5206\u7ec4 1",
+         "shortName": "BLE1"
+        },
+        {"name": "BLE G2",
+         "title": "[BLE_GP2] Enter Bluetooth group 2 / \u5207\u6362\u84dd\u7259\u5206\u7ec4 2",
+         "shortName": "BLE2"
+        },
+        {"name": "BLE G3",
+         "title": "[BLE_GP3] Enter Bluetooth group 3 / \u5207\u6362\u84dd\u7259\u5206\u7ec4 3",
+         "shortName": "BLE3"
+        },
+        {"name": "Radio 2.4G",
+         "title": "[WIR_G24] Enter radio 2.4G mode / \u5207\u6362 2.4G \u6a21\u5f0f",
+         "shortName": "R2.4G"
+        },
+        {"name": "2.4G receiver DFU",
+         "title": "[WIR_BOT] Enter the 2.4G recevier dfu mode / \u8fdb\u5165 2.4G \u5237\u673a\u6a21\u5f0f",
+         "shortName": "2.4DFU"
+        },
+        {"name": "Sleep mode",
+         "title": "[SLP_MOD] Sleep interval selection / \u5207\u6362\u4f11\u7720\u65f6\u957f",
+         "shortName": "SlpMod"
+        },
+        {"name": "High speed",
+        "title": "[HIG_SPD] High-speed refresh mode / \u9ad8\u901f\u5237\u65b0\u6e38\u620f\u6a21\u5f0f",
+        "shortName": "HiSpd"
+        },
+        {"name": "Info leds",
+         "title": "[INF_LED] Toggle display current KBD to Led / \u5207\u6362\u952e\u76d8\u72b6\u6001\u6307\u793a\u706f\u6a21\u5f0f",
+         "shortName": "InfLed"
+        },
+        {"name": "Info",
+         "title": "[INF_OUT] Print the current KBD information / \u8f93\u51fa\u5f53\u524d\u952e\u76d8\u4fe1\u606f",
+         "shortName": "Info"
+        }
+    ]
+}
