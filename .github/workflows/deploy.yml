@@ -1,0 +1,40 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SCP
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.KEY }}
+          source: "./"
+          target: "/tmp/micah-deploy"
+          strip_components: 0
+          overwrite: true
+
+      - name: Move files to web root
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.KEY }}
+          script: |
+            rm -rf /www/wwwroot/via.micah.vip
+            mkdir -p /www/wwwroot/via.micah.vip
+            cp -rf /tmp/micah-deploy/* /www/wwwroot/via.micah.vip/
+            rm -rf /tmp/micah-deploy
+            chmod -R 755 /www/wwwroot/via.micah.vip
+            ls -la /www/wwwroot/via.micah.vip/
