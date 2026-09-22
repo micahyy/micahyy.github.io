@@ -1,0 +1,371 @@
+{
+  "name": "DC22 Numpad",
+  "vendorId": "0x1A86",
+  "productId": "0xD022",
+  "matrix": {
+    "rows": 1,
+    "cols": 22
+  },
+  "layouts": {
+    "keymap": [
+      [
+        "0,17",
+        {
+          "x": 0.25
+        },
+        "0,16",
+        "0,11",
+        "0,12",
+        "0,13"
+      ],
+      [
+        "0,18",
+        {
+          "x": 0.25
+        },
+        "0,7",
+        "0,8",
+        "0,9",
+        {
+          "h": 2
+        },
+        "0,14"
+      ],
+      [
+        "0,19",
+        {
+          "x": 0.25
+        },
+        "0,4",
+        "0,5",
+        "0,6"
+      ],
+      [
+        "0,20",
+        {
+          "x": 0.25
+        },
+        "0,1",
+        "0,2",
+        "0,3",
+        {
+          "h": 2
+        },
+        "0,15"
+      ],
+      [
+        "0,21",
+        {
+          "x": 0.25,
+          "w": 2
+        },
+        "0,0",
+        "0,10"
+      ]
+    ]
+  },
+  "menus": [
+    {
+      "label": "控制",
+      "content": [
+        {
+          "label": "常规",
+          "content": [
+            {
+              "label": "全键无冲（仅 USB 生效）",
+              "type": "toggle",
+              "content": [
+                "id_dc22_nkro",
+                0,
+                3
+              ]
+            },
+            {
+              "label": "恢复出厂（清空层 / 配对 / 灯效）",
+              "type": "button",
+              "options": [
+                1
+              ],
+              "content": [
+                "id_dc22_factory_reset",
+                0,
+                2
+              ]
+            },
+            {
+              "label": "进入 Bootloader（需重烧）",
+              "type": "button",
+              "options": [
+                1
+              ],
+              "content": [
+                "id_dc22_bootloader",
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "RGB",
+      "content": [
+        {
+          "label": "常规",
+          "content": [
+            {
+              "label": "亮度",
+              "type": "range",
+              "options": [
+                0,
+                255
+              ],
+              "content": [
+                "id_qmk_rgblight_brightness",
+                2,
+                1
+              ]
+            },
+            {
+              "label": "效果",
+              "type": "dropdown",
+              "content": [
+                "id_qmk_rgblight_effect",
+                2,
+                2
+              ],
+              "options": [
+                "All Off",
+                "Solid Color",
+                "Alphas Mods",
+                "Gradient Up Down",
+                "Gradient Left Right",
+                "Breathing",
+                "Band Sat",
+                "Band Val",
+                "Band Pinwheel Sat",
+                "Band Pinwheel Val",
+                "Band Spiral Sat",
+                "Band Spiral Val",
+                "Cycle All",
+                "Cycle Left Right",
+                "Cycle Up Down",
+                "Cycle Out In",
+                "Cycle Out In Dual",
+                "Rainbow Moving Chevron",
+                "Cycle Pinwheel",
+                "Cycle Spiral",
+                "Dual Beacon",
+                "Rainbow Beacon",
+                "Rainbow Pinwheels",
+                "Raindrops",
+                "Jellybean Raindrops",
+                "Hue Breathing",
+                "Hue Pendulum",
+                "Hue Wave",
+                "Pixel Fractal",
+                "Pixel Flow",
+                "Pixel Rain",
+                "Typing Heatmap",
+                "Digital Rain",
+                "Solid Reactive Simple",
+                "Solid Reactive",
+                "Solid Reactive Wide",
+                "Solid Reactive Multiwide",
+                "Solid Reactive Cross",
+                "Solid Reactive Multicross",
+                "Solid Reactive Nexus",
+                "Solid Reactive Multinexus",
+                "Splash",
+                "Multisplash",
+                "Solid Splash",
+                "Solid Multisplash",
+                "Keypress",
+                "Locks",
+                "Wave",
+                "Audio Reactive"
+              ]
+            },
+            {
+              "showIf": "{id_qmk_rgblight_effect} > 0",
+              "label": "效果速度",
+              "type": "range",
+              "options": [
+                0,
+                3
+              ],
+              "content": [
+                "id_qmk_rgblight_effect_speed",
+                2,
+                3
+              ]
+            },
+            {
+              "showIf": "{id_qmk_rgblight_effect} > 0",
+              "label": "颜色",
+              "type": "color",
+              "content": [
+                "id_qmk_rgblight_color",
+                2,
+                4
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "音乐律动",
+      "content": [
+        {
+          "label": "常规",
+          "content": [
+            {
+              "label": "模式",
+              "type": "dropdown",
+              "content": [
+                "id_dc22_audio_mode",
+                0,
+                16
+              ],
+              "options": [
+                "Spectrum",
+                "Mono",
+                "Pulse",
+                "Mirror",
+                "Peak"
+              ]
+            },
+            {
+              "label": "颜色",
+              "type": "color",
+              "content": [
+                "id_dc22_audio_color",
+                0,
+                17
+              ]
+            },
+            {
+              "label": "增益",
+              "type": "range",
+              "options": [
+                0,
+                255
+              ],
+              "content": [
+                "id_dc22_audio_gain",
+                0,
+                18
+              ]
+            },
+            {
+              "label": "平滑度",
+              "type": "range",
+              "options": [
+                0,
+                255
+              ],
+              "content": [
+                "id_dc22_audio_smooth",
+                0,
+                19
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "切换通道",
+      "content": [
+        {
+          "label": "常规",
+          "content": [
+            {
+              "label": "当前通道（切到蓝牙会断开 VIA）",
+              "type": "dropdown",
+              "content": [
+                "id_dc22_channel",
+                0,
+                4
+              ],
+              "options": [
+                "USB 有线",
+                "蓝牙 1",
+                "蓝牙 2",
+                "蓝牙 3"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "customKeycodes": [
+    {
+      "name": "Mode USB",
+      "title": "Switch to wired USB mode"
+    },
+    {
+      "name": "Mode BLE",
+      "title": "Switch to Bluetooth (BLE) mode"
+    },
+    {
+      "name": "Mode 2G4",
+      "title": "Switch to 2.4G wireless mode"
+    },
+    {
+      "name": "BT Next",
+      "title": "Select next Bluetooth pairing slot"
+    },
+    {
+      "name": "BT Pair",
+      "title": "Re-pair Bluetooth (clear bonding info)"
+    },
+    {
+      "name": "Battery",
+      "title": "Report battery level"
+    },
+    {
+      "name": "LED Tog",
+      "title": "Toggle underglow on / off"
+    },
+    {
+      "name": "LED +",
+      "title": "Underglow brightness up"
+    },
+    {
+      "name": "LED -",
+      "title": "Underglow brightness down"
+    },
+    {
+      "name": "LED Next",
+      "title": "Next underglow effect"
+    },
+    {
+      "name": "NKRO",
+      "title": "Toggle NKRO / 6KRO"
+    },
+    {
+      "name": "Bootldr",
+      "title": "Jump to bootloader"
+    },
+    {
+      "name": "Reset",
+      "title": "Reset keymap to factory default"
+    },
+    {
+      "name": "Mode BT1",
+      "title": "Switch to Bluetooth slot 1 (advertises as czm_dc22_ble1)"
+    },
+    {
+      "name": "Mode BT2",
+      "title": "Switch to Bluetooth slot 2 (advertises as czm_dc22_ble2)"
+    },
+    {
+      "name": "Mode BT3",
+      "title": "Switch to Bluetooth slot 3 (advertises as czm_dc22_ble3)"
+    }
+  ]
+}
