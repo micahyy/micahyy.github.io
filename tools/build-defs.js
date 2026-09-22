@@ -118,9 +118,15 @@ function emit(file, ver, via) {
   if (fileMap[ver][String(vpid)]) {
     warns.push('vpid ' + vpid + ' 重复：' + file + ' 覆盖了已有定义');
   }
-  fs.writeFileSync(path.join(OUT, ver, filename), JSON.stringify(via));
-  if (!ids[ver].includes(vpid)) ids[ver].push(vpid);
-  fileMap[ver][String(vpid)] = filename;
+  // v2 和 v3 各写一份同样的内容。
+  // 客户端按固件上报的 VIA protocol 选版本：protocol >= 11 读 v3，否则读 v2
+  // （见 app/src/store/devicesThunks.ts）。两种成品格式在这个 reader 版本下
+  // 完全一致（都是 layouts.keys），所以两边都写，任何固件版本都取得到定义。
+  for (const v of ['v2', 'v3']) {
+    fs.writeFileSync(path.join(OUT, v, filename), JSON.stringify(via));
+    if (!ids[v].includes(vpid)) ids[v].push(vpid);
+    fileMap[v][String(vpid)] = filename;
+  }
 }
 
 for (const input of INPUTS) {
