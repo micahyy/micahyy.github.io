@@ -26,7 +26,7 @@ jobs:
         run: node tools/check-dup.js
 
       - name: 安装 @the-via/reader
-        run: npm i --no-save @the-via/reader
+        run: npm i --no-save @the-via/reader@1.14.4
 
       - name: 生成定义
         run: node tools/build-defs.js
