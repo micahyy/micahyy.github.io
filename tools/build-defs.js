@@ -100,6 +100,10 @@ function emit(file, ver, via, filename) {
   }
   const outFile = path.join(OUT, ver, filename);
   fs.writeFileSync(outFile, JSON.stringify(via));
+  // 兼容别名：老版本前端按 <vpid>.json 拼 URL，多写一份保证它能取到。
+  // 等前端全部改成查 fileMap 后，这两行可以直接删掉。
+  const alias = path.join(OUT, ver, vpid + '.json');
+  if (alias !== outFile) fs.writeFileSync(alias, JSON.stringify(via));
   if (!ids[ver].includes(vpid)) ids[ver].push(vpid);
   fileMap[ver][String(vpid)] = filename;
 }
