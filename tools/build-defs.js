@@ -35,11 +35,15 @@ const INPUTS = [
   { dir: 'custom/definitions', ver: null, kind: 'auto' },
 ];
 
-// 无论放在哪一层，这几个都不是键盘定义，跳过
+// 无论放在哪一层，这几个都不是 VIA 定义，跳过
+//   keyboard.json : QMK 固件描述文件（vid/pid 在 usb.vid/usb.pid），
+//                   真正的 VIA 定义在它旁边的 keymaps/via/*.json
 const EXCLUDE_FILES = new Set([
   'configs.json',
   'supported_kbs.json',
   'hash.json',
+  'keyboard.json',
+  'info.json',
   '.gitkeep',
 ]);
 
