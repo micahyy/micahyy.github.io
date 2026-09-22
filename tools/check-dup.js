@@ -9,18 +9,14 @@
  *   ERROR  会让人白改的重复（czm 内部重复 / custom 盖住 czm）→ 退出码 1
  *   WARN   历史成品与 czm 重复，czm 优先，无害
  *
- * 优先级（与 build-defs.js 的 INPUTS 一致，后面的覆盖前面）：
- *   definitions/v3 < converted-defs/v3 < czm < custom/definitions
+ * 唯一输入源就是 czm/（递归），所以任何重复都等于冲突。
  */
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.env.REPO_ROOT || process.cwd();
 const INPUTS = [
-  { dir: 'definitions/v3', label: 'definitions' },
-  { dir: 'converted-defs/v3', label: 'converted-defs' },
   { dir: 'czm', label: 'czm' },
-  { dir: 'custom/definitions', label: 'custom' },
 ];
 const EXCLUDE_FILES = new Set([
   'configs.json', 'supported_kbs.json', 'hash.json',
@@ -82,9 +78,7 @@ const rows = [];
 
 for (const [vpid, list] of [...map.entries()].sort((a, b) => a[0] - b[0])) {
   if (list.length < 2) continue;
-  const inCzm = list.filter((x) => x.label === 'czm').length;
-  const hasCustom = list.some((x) => x.label === 'custom');
-  const isError = inCzm > 1 || (inCzm > 0 && hasCustom);
+  const isError = true;
   if (isError) errors++;
   rows.push({ vpid, list, isError });
 }

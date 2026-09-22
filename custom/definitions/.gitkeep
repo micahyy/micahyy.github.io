@@ -1,2 +1,0 @@
-把键盘定义 JSON 直接放在这个目录下（文件名保持原样，不要改）。
-提交后 GitHub Actions 会自动编译，产物出现在 dist/definitions/v3/。

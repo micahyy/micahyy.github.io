@@ -3,10 +3,10 @@
  * VIA 定义生成器 —— 只在 GitHub Actions 里运行（服务器不再做任何生成）
  *
  * 输入（全部在仓库内）:
- *   custom/definitions/*.json     用户上传的源定义（V2/V3 源格式）
- *   czm/ 下任意层级的 .json       CZM 源定义（递归扫描）
- *   definitions/v3/*.json         官方定义（多为成品格式）
- *   converted-defs/v3/*.json      已转换好的成品定义
+ *   czm/ 下任意层级的 .json       唯一输入源（递归扫描）
+ *
+ *   definitions/v3、converted-defs/v3、custom/definitions 已停用，
+ *   文件留在仓库里作存档，不再参与编译
  *
  * 输出（提交回仓库）:
  *   dist/definitions/v2/<vpid>.json
@@ -25,14 +25,10 @@ const crypto = require('crypto');
 const ROOT = process.env.REPO_ROOT || process.cwd();
 const OUT = path.join(ROOT, 'dist', 'definitions');
 
-// 输入目录：顺序即优先级，后面的覆盖前面（custom 排最后，同 ID 能盖住 czm）
-// 每个目录都【递归】读取 —— czm 下爱建多少层子文件夹都行，全部扫到，
+// 唯一输入目录，【递归】读取 —— czm 下爱建多少层子文件夹都行，全部扫到，
 // 扫到的 JSON 一律编译成 dist/definitions/v3/<vpid>.json
 const INPUTS = [
-  { dir: 'definitions/v3', ver: 'v3', kind: 'auto' },
-  { dir: 'converted-defs/v3', ver: 'v3', kind: 'done' },
   { dir: 'czm', ver: null, kind: 'auto' },
-  { dir: 'custom/definitions', ver: null, kind: 'auto' },
 ];
 
 // 无论放在哪一层，这几个都不是 VIA 定义，跳过
