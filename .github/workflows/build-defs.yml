@@ -9,6 +9,7 @@ on:
       - 'definitions/**'
       - 'converted-defs/**'
       - 'tools/build-defs.js'
+      - 'tools/check-dup.js'
       - '.github/workflows/build-defs.yml'
   workflow_dispatch:
 
@@ -23,6 +24,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - name: 检查重复 PID/VID
+        run: node tools/check-dup.js
 
       - name: 安装 @the-via/reader
         run: npm i --no-save @the-via/reader
