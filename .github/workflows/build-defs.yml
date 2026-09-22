@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - 'custom/definitions/**'
-      - 'czm/definitions/**'
+      - 'czm/**'
       - 'definitions/**'
       - 'converted-defs/**'
       - 'tools/build-defs.js'

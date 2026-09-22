@@ -4,18 +4,19 @@
  *
  * 输入（全部在仓库内）:
  *   custom/definitions/*.json     用户上传的源定义（V2/V3 源格式）
- *   czm/definitions/*.json        CZM 源定义（V2/V3 源格式）
+ *   czm/ 下任意层级的 .json       CZM 源定义（递归扫描）
  *   definitions/v3/*.json         官方定义（多为成品格式）
  *   converted-defs/v3/*.json      已转换好的成品定义
  *
  * 输出（提交回仓库）:
- *   dist/definitions/v2/<原文件名>.json
- *   dist/definitions/v3/<原文件名>.json
+ *   dist/definitions/v2/<vpid>.json
+ *   dist/definitions/v3/<vpid>.json
  *   dist/definitions/supported_kbs.json   含 vendorProductIds 与 fileMap
  *   dist/definitions/hash.json
  *
- * 文件名一律保持源文件的原名，不做 vpid 重命名；
- * 客户端靠 supported_kbs.json 里的 fileMap 查 vpid -> 文件名。
+ * vpid = vendorId * 65536 + productId。产物一律按 vpid 命名，
+ * 源文件叫什么名字、放在 czm 下哪一层目录都不影响；
+ * 键盘插上后客户端读到 vid/pid 就能直接拼 URL 取文件。
  */
 const fs = require('fs');
 const path = require('path');
@@ -24,13 +25,23 @@ const crypto = require('crypto');
 const ROOT = process.env.REPO_ROOT || process.cwd();
 const OUT = path.join(ROOT, 'dist', 'definitions');
 
-// 输入目录：顺序即优先级，后面的覆盖前面
+// 输入目录：顺序即优先级，后面的覆盖前面（custom 排最后，同 ID 能盖住 czm）
+// 每个目录都【递归】读取 —— czm 下爱建多少层子文件夹都行，全部扫到，
+// 扫到的 JSON 一律编译成 dist/definitions/v3/<vpid>.json
 const INPUTS = [
   { dir: 'definitions/v3', ver: 'v3', kind: 'auto' },
   { dir: 'converted-defs/v3', ver: 'v3', kind: 'done' },
-  { dir: 'czm/definitions', ver: null, kind: 'auto' },
+  { dir: 'czm', ver: null, kind: 'auto' },
   { dir: 'custom/definitions', ver: null, kind: 'auto' },
 ];
+
+// 无论放在哪一层，这几个都不是键盘定义，跳过
+const EXCLUDE_FILES = new Set([
+  'configs.json',
+  'supported_kbs.json',
+  'hash.json',
+  '.gitkeep',
+]);
 
 const THEME = {
   alpha: { c: '#363434', t: '#E8C4B8' },
@@ -49,7 +60,7 @@ function walk(dir) {
   for (const e of ents) {
     const p = path.join(dir, e.name);
     if (e.isDirectory()) out = out.concat(walk(p));
-    else if (e.isFile() && e.name.endsWith('.json')) out.push(p);
+    else if (e.isFile() && e.name.endsWith('.json') && !EXCLUDE_FILES.has(e.name)) out.push(p);
   }
   return out.sort();
 }
@@ -93,17 +104,17 @@ const warns = [];
 let converted = 0;
 let passthrough = 0;
 
-function emit(file, ver, via, filename) {
+function emit(file, ver, via) {
   const vpid = via.vendorProductId != null ? via.vendorProductId : toVpid(via);
   if (!Number.isInteger(vpid) || vpid <= 0) {
     throw new Error(file + ' 无法得到合法的 vendorProductId');
   }
-  const outFile = path.join(OUT, ver, filename);
-  fs.writeFileSync(outFile, JSON.stringify(via));
-  // 兼容别名：老版本前端按 <vpid>.json 拼 URL，多写一份保证它能取到。
-  // 等前端全部改成查 fileMap 后，这两行可以直接删掉。
-  const alias = path.join(OUT, ver, vpid + '.json');
-  if (alias !== outFile) fs.writeFileSync(alias, JSON.stringify(via));
+  // 产物统一按 vpid 命名：源文件叫什么、在 czm 下哪层目录都不影响
+  const filename = vpid + '.json';
+  if (fileMap[ver][String(vpid)]) {
+    warns.push('vpid ' + vpid + ' 重复：' + file + ' 覆盖了已有定义');
+  }
+  fs.writeFileSync(path.join(OUT, ver, filename), JSON.stringify(via));
   if (!ids[ver].includes(vpid)) ids[ver].push(vpid);
   fileMap[ver][String(vpid)] = filename;
 }
@@ -111,7 +122,6 @@ function emit(file, ver, via, filename) {
 for (const input of INPUTS) {
   const dir = path.join(ROOT, input.dir);
   for (const file of walk(dir)) {
-    const filename = path.basename(file);
     let def;
     try {
       def = JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -120,14 +130,14 @@ for (const input of INPUTS) {
       continue;
     }
 
-    // 成品定义（含 vendorProductId + name + layouts）：直接投放，保留原名
+    // 成品定义（含 vendorProductId + name + layouts）：直接投放
     const isDone =
       input.kind === 'done' ||
       (Number.isInteger(def.vendorProductId) && def.name && def.layouts);
     if (isDone) {
       const ver = input.ver || (def.keycodes ? 'v3' : 'v2');
       if (def.name && def.layouts) {
-        emit(file, ver, def, filename);
+        emit(file, ver, def);
         passthrough++;
         continue;
       }
@@ -136,7 +146,7 @@ for (const input of INPUTS) {
     // 源定义：过 reader 转换
     try {
       const r = convert(def);
-      emit(file, r.ver, r.via, filename);
+      emit(file, r.ver, r.via);
       converted++;
     } catch (e) {
       warns.push(file + ' 转换失败，已跳过: ' + e.message);
