@@ -1,0 +1,319 @@
+/* ============================================================================
+ *  micah.vip 全站品牌规范 (branding.css)  v2 黑白加粗风格
+ *  ⚠ v25(2026-09-15)：body padding-top 改为**条件生效**（.micah-has-nav / :has(nav)），
+ *  否则后台管理页不挂导航却仍被压出 64px 顶部空白。
+ *  ⚠ v26(2026-09-15)：v25 的副作用 = **首屏抖 64px**（页面先按"没有导航"渲染，
+ *  等 nav.js(defer) 挂上才把内容推下去）⇒ 改成**默认留白 + .micah-no-nav 豁免**，
+ *  判定提前到 nginx 注入的 head 内联脚本（见各站 sub_filter）。
+ *  ⚠ v27/v8(2026-09-15)：nav.js 的「主题」按钮真正生效 —— 非 VitePress 站切
+ *  html.micah-dark，走文末的反色深色规则；docs 直接用 VitePress 原生 html.dark。
+ *  另：.micah-icon-btn（GitHub/主题图标按钮）的背景色是 inline !important，
+ *  悬停只能动 filter，不能动 background。
+ *  适用: micah.vip / shop.micah.vip / docs.micah.vip / via.micah.vip / zmk.micah.vip
+ *  通过 nginx sub_filter 自动注入到每个站点 </head> 前
+ *  改这里一处 = 5 个站全生效
+ *
+ *  风格（2026-09-15）：
+ *    - 纯黑白灰单色调（无紫、无彩）
+ *    - 字号加大、字重加粗（视觉重心高）
+ *    - active 状态用黑色实底 + 白字（最大对比）
+ * ========================================================================== */
+
+:root {
+  /* 品牌主色 = 黑（浅色主题）/ 白（深色主题） */
+  --micah-primary: #111111;
+  --micah-primary-hover: #000000;
+  --micah-primary-on: #FFFFFF;
+
+  /* 中性 6 级灰（单色调） */
+  --micah-fg:        #111111;
+  --micah-fg-muted:  #333333;
+  --micah-fg-soft:   #555555;
+  --micah-fg-faint:  #888888;
+  --micah-bg:        #FFFFFF;
+  --micah-bg-soft:   #F7F7F7;
+  --micah-bg-muted:  #EFEFEF;
+  --micah-border:    #E5E5E5;
+  --micah-border-strong: #CCCCCC;
+
+  /* 字体 */
+  --micah-font: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC',
+                'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei',
+                sans-serif;
+  --micah-font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* 尺寸 */
+  --micah-nav-height: 64px;
+  --micah-radius: 8px;
+  --micah-radius-lg: 12px;
+
+  /* 阴影（低饱和） */
+  --micah-shadow-sm: 0 1px 2px rgba(0, 0, 0, .04);
+  --micah-shadow:    0 1px 3px rgba(0, 0, 0, .06), 0 1px 2px rgba(0, 0, 0, .03);
+  --micah-shadow-lg: 0 10px 25px rgba(0, 0, 0, .08), 0 4px 10px rgba(0, 0, 0, .03);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    /* 深色主题：白主色 / 黑底 */
+    --micah-primary: #FFFFFF;
+    --micah-primary-hover: #F0F0F0;
+    --micah-primary-on: #000000;
+
+    --micah-fg:        #FFFFFF;
+    --micah-fg-muted:  #E0E0E0;
+    --micah-fg-soft:   #B0B0B0;
+    --micah-fg-faint:  #888888;
+    --micah-bg:        #000000;
+    --micah-bg-soft:   #0E0E0E;
+    --micah-bg-muted:  #1C1C1C;
+    --micah-border:    #2A2A2A;
+    --micah-border-strong: #3D3D3D;
+  }
+}
+
+/* ============================================================================
+ *  顶部导航 #micah-nav（由 nav.js 注入到 documentElement 下）
+ * ========================================================================== */
+
+#micah-nav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
+  height: var(--micah-nav-height);
+  background: var(--micah-bg);
+  border-bottom: 2px solid var(--micah-primary);
+  box-shadow: var(--micah-shadow-sm);
+  font-family: var(--micah-font);
+  color: var(--micah-fg);
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#micah-nav * {
+  box-sizing: border-box;
+}
+
+/* logo：粗体大字 */
+#micah-nav .micah-logo {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: .5px;
+  color: var(--micah-primary);
+  margin-right: 32px;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#micah-nav .micah-logo .micah-logo-mark {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--micah-primary);
+  /* 去掉渐变，纯黑/白 */
+}
+
+/* 链接区 */
+#micah-nav .micah-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+#micah-nav .micah-links button {
+  color: var(--micah-fg);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: var(--micah-radius);
+  transition: all .15s ease;
+  white-space: nowrap;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#micah-nav .micah-links button:hover {
+  background: var(--micah-bg-muted);
+}
+
+#micah-nav .micah-links button.active {
+  background: var(--micah-primary);
+  color: var(--micah-primary-on);
+}
+
+/* 工具区 */
+#micah-nav .micah-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+#micah-nav .micah-tools button {
+  color: var(--micah-fg);
+  font-size: 15px;
+  font-weight: 600;
+  background: none;
+  border: 2px solid var(--micah-border-strong);
+  border-radius: var(--micah-radius);
+  padding: 6px 14px;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  transition: all .15s ease;
+}
+
+#micah-nav .micah-tools button:hover {
+  background: var(--micah-primary);
+  color: var(--micah-primary-on);
+  border-color: var(--micah-primary);
+}
+
+/* body 避开 nav 遮挡 —— ⚠ v26(2026-09-15)：改成**默认留白、只有后台豁免**。
+ * 旧写法（.micah-has-nav / :has(nav) 条件生效）会让页面**先按"没有导航"的布局
+ * 渲染出来，等 nav.js(defer) 挂上后才把整页内容推下 64px** ⇒ 首屏肉眼可见抖一下
+ * （实测 docs：本地 71ms→173ms、4G 152ms→280ms，h1.top 112→176）。
+ * 现在 nginx sub_filter 在 </head> 前内联了一段同步 style+script，解析 head 时就按
+ * pathname 判断是否 /admin 后台并给 <html> 打 .micah-no-nav ⇒ **首屏渲染之前留白
+ * 就已生效**，后台依旧 0 空白；nav.js 的 syncAdminClass() 再双向兜一次。
+ * ⚠ 若新增"不该挂导航且不在 /admin 下"的页面，必须走 nav.js 的 isAdminPath()，
+ *   它会同步这个类（只改 pathname 内联脚本不够）。 */
+html:not(.micah-no-nav) > body {
+  padding-top: var(--micah-nav-height) !important;
+}
+
+/* 响应式 */
+@media (max-width: 720px) {
+  #micah-nav { padding: 0 16px; }
+  #micah-nav .micah-logo { font-size: 18px; margin-right: 16px; }
+  #micah-nav .micah-links button { padding: 6px 10px; font-size: 15px; }
+  #micah-nav .micah-tools button { padding: 5px 10px; font-size: 14px; }
+}
+
+/* ============================================================================
+ *  通用品牌按钮（不强制使用）
+ * ========================================================================== */
+
+.micah-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--micah-primary);
+  color: var(--micah-primary-on);
+  border-radius: var(--micah-radius);
+  text-decoration: none;
+  font-family: var(--micah-font);
+  font-weight: 700;
+  border: 0;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+
+.micah-btn:hover {
+  background: var(--micah-primary-hover);
+}
+
+/* ============================================================================
+ *  深色模式（nav.js「主题」按钮写入，v8 · 2026-09-15）
+ *  非 VitePress 站：html.micah-dark —— 经典反色方案，对 body 的每个**顶层子元素**
+ *  做 invert + hue-rotate。⚠ 不能把 filter 加在整个 body 上：那样 position:fixed
+ *  的导航会变成"跟随文档滚走"；逐个子元素时导航自己是 fixed，依旧钉在视口顶。
+ *  图片/视频/SVG/canvas 再反转一次还原原色（导航里的 logo 也靠这条恢复）。
+ *  ⚠ v9(2026-09-15)：**<picture> 必须排除** —— PrestaShop 商品图是
+ *  <picture><img> 结构，MAIN(1)+picture(2)+img(3)=奇数层反色 ⇒ 商品照片被
+ *  整体反色。Restore 只允许落在真正的媒体元素上，<picture> 只是包装盒。
+ *  另：nav 的 logo 图在深色下改走 brightness(0)（输出全黑，交给外层 filter
+ *  反转成白色）——否则被 Restore 规则还原成黑字，黑底上隐形。
+ *  docs（VitePress）不走这套：nav.js 直接切原生 html.dark，主题自带配色更精致。
+ * ========================================================================== */
+html.micah-dark { background: #000 !important; }
+html.micah-dark > body { background: #000 !important; }
+html.micah-dark > body > * { filter: invert(1) hue-rotate(180deg) !important; }
+html.micah-dark > body > * img,
+html.micah-dark > body > * video,
+html.micah-dark > body > * svg,
+html.micah-dark > body > * canvas { filter: invert(1) hue-rotate(180deg) !important; }
+
+/* v10: 自带深色设计的页面（如 key.micah.vip 校准工具页）—— 页面主体自己管
+ * 深浅色（CSS 变量双主题），声明 .micah-no-invert 的 body 直接子元素整体
+ * 跳过反色，避免"深色页面被反成浅色"。特异性高于上面的 restore 规则。 */
+html.micah-dark > body > *.micah-no-invert,
+html.micah-dark > body > *.micah-no-invert img,
+html.micah-dark > body > *.micah-no-invert video,
+html.micah-dark > body > *.micah-no-invert svg,
+html.micah-dark > body > *.micah-no-invert canvas { filter: none !important; }
+
+/* ============================================================================
+ *  v11(2026-09-15)：导航退出反色体系，改原生深色主题
+ *  ① 导航颜色全部走 --micah-nav-* 变量（nav.js v30 / zmk 静态块 v7 的 inline
+ *     style 引用，浅色默认值内联）—— 下面在 html.micah-dark（反色站）和
+ *     html.dark（VitePress docs）下覆盖变量，两个体系共用一套深色配色，
+ *     docs 导航从此跟随深色（此前 html.dark 不触发任何 micah 反色规则）。
+ *  ② 导航整体豁免反色：此前深色下图标按钮 inline 黑底被反成白块、内部 SVG
+ *     又被 restore 规则反回白色 ⇒ "白块白图标"完全看不清（用户截图）。
+ *     inline !important 优先级高于样式表 important，logo 的
+ *     var(--micah-nav-logofilter) 不会被下面的 filter:none 覆盖。
+ *  v12(2026-09-15)：VIA / ZMK 这类**原生深色设计**的页面（body 背景天生深）
+ *  在浅色主题下也应该是深色导航 —— nav.js v31 的 adaptNativeDark() 探测到
+ *  后给 html 打 .micah-nav-dark，这里让它同样吃到深色变量 ⇒ 该类页面
+ *  "深页面 + 深导航"永远协调（页面主体靠 .micah-no-invert 豁免反色）。
+ * ========================================================================== */
+html.micah-dark > body > #micah-nav-popover,
+html.micah-dark > body > #micah-nav-static,
+html.micah-dark > body > #micah-nav-popover *,
+html.micah-dark > body > #micah-nav-static * { filter: none !important; }
+
+html.micah-dark,
+html.dark,
+html.micah-nav-dark {
+  --micah-nav-bg: #0e0e0e;
+  --micah-nav-fg: #f2f2f2;
+  --micah-nav-border: #333333;
+  --micah-nav-iconbg: #222222;
+  --micah-nav-iconfg: #f2f2f2;
+  --micah-nav-logofilter: brightness(0) invert(1);
+}
+
+/* v9: nav logo 深色下反白 —— brightness(0) 输出纯黑剪影，外层 filter 反转成白色 */
+html.micah-dark > body > * img[src*="logo.png"] { filter: brightness(0) !important; }
+
+/* 图标按钮（GitHub/主题）悬停微亮 —— 背景色是 inline !important 改不了，动 filter */
+.micah-icon-btn:hover { filter: brightness(1.3) !important; }
+/* ============================================================================
+ *  v28(2026-09-20)：深色反色下「品牌色元素」豁免（负负得正）
+ *  背景：上面的反色方案 invert(1) hue-rotate(180deg) 对**品牌色**是灾难 ——
+ *    PayPal 金 #FFC439 ⇒ 暗浊土黄（"屎黄"）；支付宝蓝 #1677ff、主题绿 #2fc283
+ *    同样被压暗压灰。品牌色有法律/识别规范，不能被主题反色改写。
+ *  做法：对需要保真的容器**再叠一次同样的 invert+hue-rotate**（负负得正还原），
+ *    并把容器内部的 img/svg/video/canvas 补偿滤镜关掉（否则会被反三次）。
+ *  用法：任何要保留真实品牌色的元素加 class="micah-keep-color" 即可；
+ *    支付按钮（PayPal / 支付宝）已按类名默认豁免。
+ * ========================================================================== */
+html.micah-dark > body > * .micah-keep-color,
+html.micah-dark > body > * .czpaypal-express,
+html.micah-dark > body > * .czalipay-express {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+html.micah-dark > body > * .micah-keep-color *,
+html.micah-dark > body > * .czpaypal-express *,
+html.micah-dark > body > * .czalipay-express * {
+  filter: none !important;
+}
