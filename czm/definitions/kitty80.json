@@ -409,6 +409,96 @@
 							]
 						}
 					]
+				},
+				{
+					"label": "Lattice",
+					"content": [
+						{
+							"showIf": "{id_qmk_audio_effect} != 0",
+							"label": "Brightness",
+							"type": "range",
+							"options": [
+								0,
+								60
+							],
+							"content": [
+								"id_qmk_lattice_brightness",
+								6,
+								1
+							]
+						},
+						{
+							"label": "Effect",
+							"type": "dropdown",
+							"content": [
+								"id_qmk_lattice_effect",
+								6,
+								2
+							],
+							"options": [
+								[
+									"none",
+									0
+								],
+								[
+									"Heart",
+									1
+								],
+								[
+									"Scan",
+									2
+								],
+								[
+									"Typing",
+									3
+								],
+								[
+									"Rain",
+									4
+								],
+								[
+									"Terminal",
+									5
+								],
+								[
+									"User Define",
+									6
+								],
+								[
+									"circle",
+									7
+								],
+								[
+									"shutdown",
+									8
+								]
+							]
+						},
+						{
+							"showIf": "{id_qmk_audio_effect} != 0",
+							"label": "Effect Speed",
+							"type": "range",
+							"options": [
+								0,
+								4
+							],
+							"content": [
+								"id_qmk_lattice_effect_speed",
+								6,
+								3
+							]
+						},
+						{
+							"showIf": "{id_qmk_audio_effect} != 0 && {id_qmk_audio_effect} != 2 && {id_qmk_audio_effect} != 6",
+							"label": "Color",
+							"type": "color",
+							"content": [
+								"id_qmk_lattice_color",
+								6,
+								4
+							]
+						}
+					]
 				}
 			]
 		}
