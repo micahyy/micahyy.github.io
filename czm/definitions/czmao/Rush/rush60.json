@@ -225,6 +225,28 @@
           ]
         }
       ]
+    },
+    {
+      "label": "功能",
+      "content": [
+        {
+          "label": "常规",
+          "content": [
+            {
+              "label": "恢复出厂设置",
+              "type": "button",
+              "options": [1],
+              "content": ["id_czm_factory_reset", 0, 1]
+            },
+            {
+              "label": "进入 Bootloader",
+              "type": "button",
+              "options": [1],
+              "content": ["id_czm_enter_bootloader", 0, 2]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
