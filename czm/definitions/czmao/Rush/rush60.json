@@ -109,18 +109,6 @@
         "4,11",
         "4,12"
       ]
-    ],
-    "labels": [
-      "Split Backspace",
-      "ISO Enter",
-      "Split Left Shift",
-      "Split Right Shift",
-      [
-        "Space",
-        "6.25U",
-        "7U",
-        "Split Space"
-      ]
     ]
   },
   "keycodes": [
