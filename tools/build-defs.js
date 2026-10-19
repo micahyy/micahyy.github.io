@@ -82,18 +82,6 @@ function toVpid(def) {
   return NaN;
 }
 
-/** 把源定义（V2/V3）转成 VIA 成品格式 */
-function convert(def) {
-  const r = getReader();
-  if (r.isKeyboardDefinitionV3(def)) {
-    return { ver: 'v3', via: r.keyboardDefinitionV3ToVIADefinitionV3(def) };
-  }
-  if (r.isKeyboardDefinitionV2(def)) {
-    return { ver: 'v2', via: r.keyboardDefinitionV2ToVIADefinitionV2(def) };
-  }
-  throw new Error('不是合法的 VIA V2/V3 源定义');
-}
-
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, 'v2'), { recursive: true });
 fs.mkdirSync(path.join(OUT, 'v3'), { recursive: true });
@@ -101,6 +89,7 @@ fs.mkdirSync(path.join(OUT, 'v3'), { recursive: true });
 const ids = { v2: [], v3: [] };
 const fileMap = { v2: {}, v3: {} };
 const warns = [];
+const errors = [];
 let converted = 0;
 let passthrough = 0;
 
@@ -127,12 +116,13 @@ function emit(file, ver, via) {
 
 for (const input of INPUTS) {
   const dir = path.join(ROOT, input.dir);
+  const r = getReader();
   for (const file of walk(dir)) {
     let def;
     try {
       def = JSON.parse(fs.readFileSync(file, 'utf8'));
     } catch (e) {
-      warns.push(file + ' JSON 解析失败，已跳过: ' + e.message);
+      errors.push(file + ' JSON 解析失败: ' + e.message);
       continue;
     }
 
@@ -140,22 +130,32 @@ for (const input of INPUTS) {
     const isDone =
       input.kind === 'done' ||
       (Number.isInteger(def.vendorProductId) && def.name && def.layouts);
-    if (isDone) {
+    if (isDone && def.name && def.layouts) {
       const ver = input.ver || (def.keycodes ? 'v3' : 'v2');
-      if (def.name && def.layouts) {
+      try {
         emit(file, ver, def);
         passthrough++;
-        continue;
+      } catch (e) {
+        errors.push(file + ' 成品直投失败: ' + e.message);
       }
+      continue;
     }
 
-    // 源定义：过 reader 转换
+    // 源定义：先判定是否为合法的 V2/V3 定义。
+    // 不是定义（如描述/配置 JSON）→ 静默跳过；
+    // 是定义但转换抛错（非法布局、菜单、越界等）→ 记为错误，构建直接失败。
+    const kind = r.isKeyboardDefinitionV3(def) ? 'v3'
+      : r.isKeyboardDefinitionV2(def) ? 'v2'
+      : null;
+    if (!kind) continue;
     try {
-      const r = convert(def);
-      emit(file, r.ver, r.via);
+      const via = kind === 'v3'
+        ? r.keyboardDefinitionV3ToVIADefinitionV3(def)
+        : r.keyboardDefinitionV2ToVIADefinitionV2(def);
+      emit(file, kind, via);
       converted++;
     } catch (e) {
-      warns.push(file + ' 转换失败，已跳过: ' + e.message);
+      errors.push(file + ' 转换失败（源定义非法，无法生成 VIA 定义）: ' + e.message);
     }
   }
 }
@@ -190,6 +190,10 @@ console.log(
   '（转换 ' + converted + ' / 成品直投 ' + passthrough + '）hash=' + hash
 );
 if (warns.length) {
-  console.log('[build-defs] 跳过 ' + warns.length + ' 个: ' +
-    warns.slice(0, 5).join(' | '));
+  console.warn('[build-defs] 警告 ' + warns.length + ' 个: ' + warns.slice(0, 5).join(' | '));
+}
+if (errors.length) {
+  console.error('[build-defs] 构建失败：' + errors.length + ' 个源定义有问题，未编译通过：');
+  for (const e of errors) console.error('  ✗ ' + e);
+  process.exit(1);
 }
