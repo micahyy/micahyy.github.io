@@ -239,13 +239,18 @@
               "label": "恢复出厂设置",
               "type": "button",
               "options": [1],
-              "content": ["id_czm_factory_reset", 0, 1]
+              "content": ["id_czm_reset_kb", 0, 1]
             },
             {
               "label": "进入 Bootloader",
               "type": "button",
               "options": [1],
-              "content": ["id_czm_enter_bootloader", 0, 2]
+              "content": ["id_czm_bootloader_kb", 0, 2]
+            },
+            {
+              "label": "全键无冲 (NKRO)",
+              "type": "toggle",
+              "content": ["id_czm_nkro_kb", 0, 3]
             }
           ]
         }
