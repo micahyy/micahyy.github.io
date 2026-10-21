@@ -42,21 +42,3 @@ jobs:
             git commit -m "chore: 重新生成 VIA 定义 [skip ci]"
             git push
           fi
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    if: ${{ secrets.SSH_HOST != '' }}
-    steps:
-      - name: 同步到服务器
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            cd ${{ secrets.SSH_SITE_PATH }}
-            git pull --ff-only origin main
-            # 若需重载静态服务（如 nginx/caddy），取消下一行注释并改服务名
-            # sudo systemctl reload nginx
