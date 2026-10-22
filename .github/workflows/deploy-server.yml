@@ -1,0 +1,28 @@
+name: Deploy to Server (domestic / via.micah.vip)
+
+on:
+  workflow_run:
+    workflows: ["Build VIA definitions"]
+    types: [completed]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 导出干净站点(不含 .git / node_modules)
+        run: |
+          rm -rf /tmp/via.micah.vip
+          mkdir -p /tmp/via.micah.vip
+          git archive HEAD | tar -x -C /tmp/via.micah.vip
+      - name: 上传到新服务器(国内)
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.KEY }}
+          source: "/tmp/via.micah.vip"
+          target: "/www/wwwroot"
