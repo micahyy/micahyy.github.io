@@ -14,9 +14,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: 导出干净站点(不含 .git / node_modules)
         run: |
-          rm -rf /tmp/via.micah.vip
-          mkdir -p /tmp/via.micah.vip
-          git archive HEAD | tar -x -C /tmp/via.micah.vip
+          rm -rf .deploy
+          mkdir -p .deploy/via.micah.vip
+          git archive HEAD | tar -x -C .deploy/via.micah.vip
+          echo "导出文件数: $(find .deploy/via.micah.vip -type f | wc -l)"
       - name: 上传到新服务器(国内)
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -24,5 +25,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.KEY }}
-          source: "/tmp/via.micah.vip"
+          source: ".deploy/via.micah.vip"
           target: "/www/wwwroot"
