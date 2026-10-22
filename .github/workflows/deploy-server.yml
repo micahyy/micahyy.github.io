@@ -12,12 +12,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: 导出干净站点(不含 .git / node_modules)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 生成定义(dist)
         run: |
-          rm -rf .deploy
-          mkdir -p .deploy/via.micah.vip
-          git archive HEAD | tar -x -C .deploy/via.micah.vip
-          echo "导出文件数: $(find .deploy/via.micah.vip -type f | wc -l)"
+          npm i --no-save @the-via/reader@1.14.4
+          node tools/build-defs.js
+      - name: 导出干净站点(含生成的 dist)
+        run: |
+          git add -A
+          git add -f dist
+          rm -rf .deploy && mkdir -p .deploy/via.micah.vip
+          git archive $(git write-tree) | tar -x -C .deploy/via.micah.vip
+          echo "文件数: $(find .deploy/via.micah.vip -type f | wc -l)"
       - name: 上传到新服务器(国内)
         uses: appleboy/scp-action@v0.1.7
         with:
