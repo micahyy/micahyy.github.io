@@ -175,6 +175,23 @@ fs.writeFileSync(
   JSON.stringify(supported)
 );
 
+// 站点根目录另外需要 /tabkb/ 下的两个文件。
+// web app（tabkb via-app）启动时固定 fetch('/tabkb/supported_kbs.json') 与
+// fetch('/tabkb/configs.json')；supported_kbs.json 取不到会抛错，中断
+// loadSupportedIds -> reloadConnectedDevices，页面就永远停在“搜索设备”。
+// 所以这里把构建出来的 id 列表按 app 要的 {v2:[...], v3:[...]} 形状输出到 tabkb/。
+const TABKB_OUT = path.join(ROOT, 'tabkb');
+fs.mkdirSync(TABKB_OUT, { recursive: true });
+fs.writeFileSync(
+  path.join(TABKB_OUT, 'supported_kbs.json'),
+  JSON.stringify({ v2: ids.v2, v3: ids.v3 })
+);
+const configsSrc = path.join(ROOT, 'czm', 'configs.json');
+fs.writeFileSync(
+  path.join(TABKB_OUT, 'configs.json'),
+  fs.existsSync(configsSrc) ? fs.readFileSync(configsSrc) : '[]'
+);
+
 const h = crypto.createHash('sha256');
 for (const ver of ['v2', 'v3']) {
   for (const vpid of ids[ver]) {

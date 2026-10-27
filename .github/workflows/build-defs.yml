@@ -17,25 +17,20 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - name: 检查重复 PID/VID
         run: node tools/check-dup.js
-
       - name: 安装 @the-via/reader
         run: npm i --no-save @the-via/reader@1.14.4
-
       - name: 生成定义
         run: node tools/build-defs.js
-
       - name: 提交产物
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A dist
+          git add -A dist tabkb
           if git diff --cached --quiet; then
             echo "产物无变化，跳过提交"
           else
