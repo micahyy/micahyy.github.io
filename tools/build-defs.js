@@ -202,6 +202,25 @@ for (const ver of ['v2', 'v3']) {
 const hash = h.digest('hex');
 fs.writeFileSync(path.join(OUT, 'hash.json'), hash);
 
+// 站点上 app 取定义的路径是 /definitions/{v2,v3}/<vpid>.json。
+//   via.micah.vip：nginx 把 /definitions/ rewrite 到了 dist/definitions/，没问题；
+//   GitHub Pages：直接把仓库根当站点根，/definitions/ 就是仓库里这个目录。
+// 而仓库里的 definitions/ 原先是“已停用的存档”（内容比 dist 旧，缺 EC65 等新键盘），
+// Pages 上取 EC65 的定义会 404。这里把产物同步一份到 definitions/，两个站点都拿得到。
+// （要彻底去重就把 via.micah.vip 的 nginx 改成直接用仓库 definitions/，然后删掉 dist/。）
+const SITE_OUT = path.join(ROOT, 'definitions');
+function copyDir(from, to) {
+  fs.mkdirSync(to, { recursive: true });
+  for (const e of fs.readdirSync(from, { withFileTypes: true })) {
+    const s = path.join(from, e.name);
+    const d = path.join(to, e.name);
+    if (e.isDirectory()) copyDir(s, d);
+    else fs.copyFileSync(s, d);
+  }
+}
+fs.rmSync(SITE_OUT, { recursive: true, force: true });
+copyDir(OUT, SITE_OUT);
+
 console.log(
   '[build-defs] v2=' + ids.v2.length + ' v3=' + ids.v3.length +
   '（转换 ' + converted + ' / 成品直投 ' + passthrough + '）hash=' + hash
