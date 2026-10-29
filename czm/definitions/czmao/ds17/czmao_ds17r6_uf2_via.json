@@ -38,13 +38,7 @@
 		]
 	},
 	"keycodes": [
-		"qmk_lighting",
-		{ "name": "CZM_BOOT", "title": "\u8fdb\u5165 Bootloader", "code": 23552 },
-		{ "name": "CZM_NKRO", "title": "\u5168\u952e\u65e0\u51b2(NKRO)", "code": 23553 },
-		{ "name": "CZM_FACTORY", "title": "\u6062\u590d\u51fa\u5382\u8bbe\u7f6e", "code": 23554 },
-		{ "name": "QK_BOOT", "title": "\u8fdb\u5165 Bootloader", "code": 31744 },
-		{ "name": "NK_TOGG", "title": "\u5168\u952e\u65e0\u51b2(NKRO)", "code": 28691 },
-		{ "name": "EE_CLR", "title": "\u6062\u590d\u51fa\u5382\u8bbe\u7f6e", "code": 31747 }
+		"qmk_lighting"
 	],
 	"menus": [
 		{
