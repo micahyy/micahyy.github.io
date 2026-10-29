@@ -16,9 +16,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # 基础设施偶发失败（npm/网络抖动）自动重试，不用人手重跑
-    retry:
-      max-attempts: 3
     permissions:
       contents: write
     steps:
