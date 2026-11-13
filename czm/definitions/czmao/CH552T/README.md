@@ -1,6 +1,7 @@
 # CH552T series / CH552T 系列
 
-CZMao CH552T (TSSOP20) keyboard VIA definitions / CZMao CH552T（TSSOP20）系列键盘的 VIA 定义源。
+VIA definition sources for CZMao keyboards based on the WCH CH552T (TSSOP20).
+CZMao 基于 WCH CH552T（TSSOP20）的键盘 VIA 定义源。
 
 `micahyy.github.io` 的 GitHub Actions 会递归扫描 `czm/` 下所有 `.json`，按
 `vpid = vendorId * 65536 + productId` 生成 `definitions/v3/<vpid>.json` 与
@@ -10,35 +11,19 @@ GitHub Actions in `micahyy.github.io` recursively scans every `.json` under `czm
 `definitions/v3/<vpid>.json` and `dist/definitions/v3/<vpid>.json` from
 `vpid = vendorId * 65536 + productId`; the subdirectory level does not affect the output filename.
 
-## Folder structure / 目录结构
+## Boards / 板卡
 
-This folder groups **CH552T**-based boards; each board lives in its own subfolder.
+Each board keeps its definition in its own subfolder.
+每块板卡的定义放在各自的子目录中。
 
-本文件夹收纳 **CH552T** 系列板卡，每块板子在独立子目录：
+| Board | VID | PID | vpid | VIA definition |
+|---|---|---|---|---|
+| DS22Lite | `0x4A17` | `0x4A50` | `1243040336` | `czm/definitions/czmao/CH552T/DS22Lite/DS22Lite_via.json` |
 
-| Board | Folder | VIA definition |
-|---|---|---|
-| DS22Lite | `CH552T/DS22Lite/` | `czm/definitions/czmao/CH552T/DS22Lite/DS22Lite_via.json` |
+Load the JSON in the VIA Design tab to use the board.
+在 VIA 的 Design 页导入对应 JSON 即可使用。
 
-- `CH552G`-based boards will be a sibling folder `CH552G/` under `czm/definitions/czmao/`.
-- 未来的 `CH552G` 系列将作为同级文件夹 `CH552G/` 放在 `czm/definitions/czmao/` 下。
-- A future `DS17Lite` (also CH552T-based) will be added under `CH552T/DS17Lite/`.
-- 未来的 `DS17Lite`（同为 CH552T）将放进 `CH552T/DS17Lite/`。
+## Note / 说明
 
-## USB ID 分配 / USB ID allocation
-
-| Board | VID | PID | vpid | Firmware | VIA definition |
-|---|---|---|---|---|---|
-| DS22Lite | `0x4A17` | `0x4A50` | `1243040336` | `firmware/keyboards/DS22Lite/` | `czm/definitions/czmao/CH552T/DS22Lite/DS22Lite_via.json` |
-
-- VID `0x4A17` is CZMao-owned. PID `0x4A50` was allocated after checking all existing VIA definitions: `0x4A5x` was unused and vpid `1243040336` was absent from `supported_kbs.json` / v3 outputs.
-- VID `0x4A17` 为 CZMao 自有；PID `0x4A50` 经全量查重后分配：`0x4A5x` 未被占用，vpid `1243040336` 不在 `supported_kbs.json` / v3 成品中。
-- Reserved / 预留：`0x4A51..0x4A5F` for future CH552T boards. Run `node tools/check-dup.js` before assigning a new PID.
-- 后续 CH552T 板预留 `0x4A51..0x4A5F`；分配新 PID 前先跑 `node tools/check-dup.js`。
-- `0x4A17` already-used PIDs: `0x0004`(EC87), `0x4A18`(DS17 R3), `0x4A19`(DS17 R6), `0x4A44`(EC65), `0x4A60`(Rush60).
-- `0x4A17` 下已占用 PID：`0x0004`(EC87)、`0x4A18`(DS17 R3)、`0x4A19`(DS17 R6)、`0x4A44`(EC65)、`0x4A60`(Rush60)。
-- Old values `0x5262/0x4443` were borrowed from the upstream framework and are abandoned.
-- 旧值 `0x5262/0x4443` 是上游框架临时借用值，已弃用。
-
-Sync requirement / 同步要求：firmware `config.h`, this JSON, `DS22Lite_signalrgb.js`, and `firmware/verify.py` must all carry the same VID/PID pair.
-同步要求：固件 `config.h`、本 JSON、`DS22Lite_signalrgb.js`、`firmware/verify.py` 四处保持同一对 VID/PID。
+The firmware and the VIA definition should use the same VID/PID pair.
+固件与 VIA 定义需使用同一对 VID/PID。
