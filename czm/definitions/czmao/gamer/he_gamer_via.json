@@ -1,0 +1,58 @@
+{
+  "name": "czmao_gamer_he",
+  "vendorId": "0x1A86",
+  "productId": "0xCAC1",
+  "matrix": { "rows": 8, "cols": 6 },
+  "layouts": {
+    "keymap": [
+      [{ "c": "#7a4c9c", "t": "#ffffff" }, "4,0", "4,1", "4,2", "4,3", "4,4", "4,5"],
+      [{ "c": "#cccccc", "t": "#000000" }, "7,0", "7,1", "7,2", "7,3", "7,4", "7,5"],
+      ["2,0", "2,1", "2,2", "2,3", "2,4", "2,5"],
+      ["1,0", "1,1", "1,2", "1,3", "1,4", "1,5"],
+      [
+        { "c": "#505557", "t": "#d9d7d7" }, "0,0",
+        { "c": "#cccccc", "t": "#000000" }, "0,1", "0,2", "0,3", "0,4", "0,5"
+      ],
+      [
+        { "c": "#505557", "t": "#d9d7d7" }, "3,0", "3,1", "3,2",
+        { "w": 2 }, "3,4",
+        { "c": "#cccccc", "t": "#000000" }, "3,5"
+      ]
+    ]
+  },
+  "customKeycodes": [
+    { "name": "Light Toggle", "title": "\u706f\u5149\u5f00\u5173", "shortName": "LTG" },
+    { "name": "Effect Cycle", "title": "\u5faa\u73af\u706f\u5149\u6548\u679c", "shortName": "EFF" },
+    { "name": "Brightness Plus", "title": "\u4eae\u5ea6 +32 \u6863", "shortName": "BRI" },
+    { "name": "Bootloader", "title": "\u8fdb\u5165 DFU \u70e7\u5f55", "shortName": "DFU" }
+  ],
+  "menus": [
+    {
+      "label": "Lighting",
+      "content": [
+        {
+          "label": "Backlight",
+          "content": [
+            { "label": "Brightness", "type": "range", "options": [0, 255], "content": ["id_qmk_rgb_matrix_brightness", 3, 1] },
+            { "label": "Effect", "type": "dropdown", "content": ["id_qmk_rgb_matrix_effect", 3, 2], "options": ["\u5173\u95ed", "\u5e38\u4eae", "\u547c\u5438", "\u5f69\u8679", "\u6309\u952e\u53cd\u9988"] },
+            { "showIf": "{id_qmk_rgb_matrix_effect} != 0", "label": "Effect Speed", "type": "range", "options": [0, 255], "content": ["id_qmk_rgb_matrix_effect_speed", 3, 3] },
+            { "showIf": "{id_qmk_rgb_matrix_effect} != 0", "label": "Color", "type": "color", "content": ["id_qmk_rgb_matrix_color", 3, 4] }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "\u529f\u80fd",
+      "content": [
+        {
+          "label": "\u5e38\u89c4",
+          "content": [
+            { "label": "\u6062\u590d\u51fa\u5382\u8bbe\u7f6e", "type": "button", "options": [1], "content": ["id_czm_factory_reset", 0, 1] },
+            { "label": "\u5168\u952e\u65e0\u51b2\uff08NKRO\uff09", "type": "toggle", "content": ["id_czm_nkro", 0, 3] },
+            { "label": "\u8fdb\u5165 Bootloader", "type": "button", "options": [1], "content": ["id_czm_enter_bootloader", 0, 2] }
+          ]
+        }
+      ]
+    }
+  ]
+}
